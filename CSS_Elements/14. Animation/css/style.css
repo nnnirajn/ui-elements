@@ -1,0 +1,136 @@
+/* Default css start */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* Default css End */
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/**********************************************/
+.zizo-animation {
+	width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: deeppink;
+    animation: zizo 1s linear alternate infinite;
+}
+
+@keyframes zizo{
+    0%{
+                transform: scale(0.60);
+    }
+    
+    50%{
+                transform: scale(1.10);
+    }
+    
+    100%{
+                transform: scale(0.90);
+    }
+}
+
+/*********************************************/
+.updn-animation{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: deeppink;
+    animation: updn 2s linear infinite;
+}
+
+@keyframes updn{
+    0%{
+               transform: translateY(0px);
+    }
+    
+    25%{
+                transform: translateY(100px);
+    }
+    
+    50%{
+                transform: translateY(0px);
+    }
+    
+    75%{
+                transform: translateY(-100px);
+    }
+    
+    100%{
+                transform: translateY(0px);
+    }
+}
+
+/***********************************************/
+.rotate-animation{
+    width: 100px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: deeppink;
+    animation: rotate 0.5s linear infinite;
+}
+
+@keyframes rotate {
+    0%{
+        -webkit-transform: rotate(0deg);
+                transform: rotate(0deg);
+    }
+    100%{
+        -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+    }
+}
+
+/**************************************************/
+
+.zizzac-animation{
+    width: 100px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: deeppink;
+    animation: ziczac 1s linear infinite;
+}
+
+@keyframes ziczac{
+        0%{
+           -webkit-transform: rotate(10deg);
+                   transform: rotate(10deg);
+        }
+        50%{
+          -webkit-transform: rotate(35deg);
+                  transform: rotate(35deg);
+        }
+        100%{
+          -webkit-transform: rotate(10deg);
+                  transform: rotate(10deg);
+        }
+    }
+
+/***********************************************/
+
+.see-saw-animation{
+    width: 100px;
+    height: 100px;
+    background-color: deeppink;
+    animation: see-saw 1s linear infinite;
+}
+
+@keyframes see-saw{
+    0%{
+                transform: rotateY(-90deg);
+    }
+    
+    100%{
+                transform: rotateY(90deg);
+    }
+}
+
+
+
+

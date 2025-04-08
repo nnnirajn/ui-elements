@@ -1,0 +1,92 @@
+/* Default css start */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Default css End */
+.images-overlapping-section{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.images-overlapping-section-left{
+    width: 50%;
+    display: flex;
+}
+
+.images-overlapping-section-text{
+    width: 50%;       
+}
+
+.images-overlapping-section-left::after{
+    position: absolute;
+    content: '';
+    background-image: url(../img/dots.jpg);
+    background-position: center center;
+    background-size: 100%;
+    width: 420px;
+    height: 400px;
+    left: 20%;
+    top: 46%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
+.images-overlapping-section-left::before{
+    content: " ";
+    position: absolute;
+    top: 10px;
+    left: 34px;
+    border: 15px solid #345def;
+    width: 436px;
+    height: 467px;
+    z-index: -1;
+}
+
+.image1 img,
+.image2 img,
+.image3 img{
+    position: absolute;
+    background-color: #fff;
+    padding: 8px;
+}
+
+.image1 img{
+    position: absolute;
+    z-index: 5;
+}
+
+.image2 img{
+    position: absolute;
+    margin: 154px 0px 0px 149px;
+    z-index: 7;
+}
+
+.image3 img{
+    position: absolute;
+    margin: 220px 0px 0px -80px;
+    z-index: 6;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

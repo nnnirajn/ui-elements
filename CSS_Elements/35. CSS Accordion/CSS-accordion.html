@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>CSS Accordion</title>
+	<style>
+		.hidden-box {
+			display: none;
+		}
+
+		.tabs {
+			overflow: hidden;
+		}
+
+		.tab {
+			width: 100%;
+			color: white;
+			overflow: hidden;
+		}
+
+		.tab-label {
+			display: flex;
+			justify-content: space-between;
+			padding: 16px;
+			background: #2c3e50;
+			cursor: pointer;
+		}
+
+		.tab-label::after {
+			content: '❯';
+			width: 1em;
+			height: 1em;
+			text-align: center;
+			transition: all 0.35s;
+		}
+
+		.tab-content {
+			max-height: 0;
+			opacity: 0;
+			color: #2c3e50;
+			background: white;
+			transition: all 1s;
+		}
+
+		input:checked+.tab-label {
+			background: #1a252f;
+		}
+
+		input:checked+.tab-label::after {
+			transform: rotate(90deg);
+		}
+
+		input:checked~.tab-content {
+			max-height: 100vh;
+			opacity: 1;
+			transition: all 1s;
+			background-color: red;
+		}
+	</style>
+</head>
+<body>
+	<h1>Open multiple</h1>
+	<div class="tabs">
+
+		<div class="tab">
+			<input class="hidden-box" type="checkbox" id="chck1" />
+			<label class="tab-label" for="chck1">Item 1</label>
+			<div class="tab-content">
+				tatibus autem amet quos explicabo, quis porro, totam, error dolor accusantium delectus facere. Nihil
+				illo animi, temporibus reprehenderit fugiat ipsa repellendus dolorum, dolorem, placeat saepe hic quis
+				consequuntur! Asperiores, provident iste nam at vitae, explicabo vero ex error aut amet corrupti dolores
+				veritatis eveniet aliquam ipsa impedit obcaecati. Dignissimos dolorum, esse cumque nihil, dolorem atque
+				nulla quis eveniet rem autem ipsa, facere cum. Reprehenderit possimus voluptates voluptate tenetur quae
+				doloribus enim sunt. Incidunt magnam ipsam, esse autem corrupti quibusdam exercitationem, ab aperiam
+				minus error id sint laborum possimus neque magni? Neque modi error quis saepe voluptatem dolorum
+				reiciendis dolores, eligendi, numquam, possimus provident repellat qui consectetur doloremque! Impedit
+				quos alias rerum amet? Obcaecati extatibus autem amet quos explicabo, quis porro, totam, error dolor
+				accusantium delectus facere. Nihil illo animi, temporibus reprehenderit fugiat ipsa repellendus dolorum,
+				dolorem, placeat saepe hic quis consequuntur! Asperiores, provident iste nam at vitae, explicabo vero ex
+				error aut amet corrupti dolores veritatis eveniet aliquam ipsa impedit obcaecati. Dignissimos dolorum,
+				esse cumque nihil, dolorem atque nulla quis eveniet rem autem ipsa, facere cum. Reprehenderit possimus
+				voluptates voluptate tenetur quae doloribus enim sunt. Incidunt magnam ipsam, esse autem corrupti
+				quibusdam exercitationem, ab aperiam minus error id sint laborum possimus neque magni? Neque modi error
+				quis saepe voluptatem dolorum reiciendis dolores, eligendi, numquam, possimus provident repellat qui
+				consectetur doloremque! Impedit quos alias rerum amet? Obcaecati ex
+				tatibus autem amet quos explicabo, quis porro, totam, error dolor accusantium delectus facere. Nihil
+				illo animi, temporibus reprehenderit fugiat ipsa repellendus dolorum, dolorem, placeat saepe hic quis
+				consequuntur! Asperiores, provident iste nam at vitae, explicabo vero ex error aut amet corrupti dolores
+				veritatis eveniet aliquam ipsa impedit obcaecati. Dignissimos dolorum, esse cumque nihil, dolorem atque
+				nulla quis eveniet rem autem ipsa, facere cum. Reprehenderit possimus voluptates voluptate tenetur quae
+				doloribus enim sunt. Incidunt magnam ipsam, esse autem corrupti quibusdam exercitationem, ab aperiam
+				minus error id sint laborum possimus neque magni? Neque modi error quis saepe voluptatem dolorum
+				reiciendis dolores, eligendi, numquam, possimus provident repellat qui consectetur doloremque! Impedit
+				quos alias rerum amet? Obcaecati extatibus autem amet quos explicabo, quis porro, totam, error dolor
+				accusantium delectus facere. Nihil illo animi, temporibus reprehenderit fugiat ipsa repellendus dolorum,
+				dolorem, placeat saepe hic quis consequuntur! Asperiores, provident iste nam at vitae, explicabo vero ex
+				error aut amet corrupti dolores veritatis eveniet aliquam ipsa impedit obcaecati. Dignissimos dolorum,
+				esse cumque nihil, dolorem atque nulla quis eveniet rem autem ipsa, facere cum. Reprehenderit possimus
+				voluptates voluptate tenetur quae doloribus enim sunt. Incidunt magnam ipsam, esse autem corrupti
+				quibusdam exercitationem, ab aperiam minus error id sint laborum possimus neque magni? Neque modi error
+				quis saepe voluptatem dolorum reiciendis dolores, eligendi, numquam, possimus provident repellat qui
+				consectetur doloremque! Impedit quos alias rerum amet? Obcaecati ex
+			</div>
+		</div>
+
+		<div class="tab">
+			<input class="hidden-box" type="checkbox" id="chck2" />
+			<label class="tab-label" for="chck2">Item 2</label>
+			<div class="tab-content">
+				Lorem ipsum dolor sit amet consectetur adipisicing elit. A, in!Lorem ipsum dolor sit amet consectetur
+				adipisicing elit. A, in! Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam modi omnis
+				totam perspiciatis eaque cupiditate nesciunt? Culpa tempora libero quis, atque reiciendis voluptatum
+				possimus sequi, praesentium ipsum doloremque consequatur officia odio vero consectetur. Dolor provident
+				ipsam illum molestiae error, hic quam veniam omnis qui ad veritatis ducimus natus cumque perferendis
+				eius harum! Pariatur, aliquam sint. Nulla explicabo qui saepe consectetur enim amet tempore. Harum
+				voluptate ad velit aliquid, aliquam aperiam! In voluptatibus autem amet quos explicabo, quis porro,
+				totam, error dolor accusantium delectus facere. Nihil illo animi, temporibus reprehenderit fugiat ipsa
+				repellendus dolorum, dolorem, placeat saepe hic quis consequuntur! Asperiores, provident iste nam at
+				vitae, explicabo vero ex error aut amet corrupti dolores veritatis eveniet aliquam ipsa impedit
+				obcaecati. Dignissimos dolorum, esse cumque nihil, dolorem atque nulla quis eveniet rem autem ipsa,
+				facere cum. Reprehenderit possimus voluptates voluptate tenetur quae doloribus enim sunt. Incidunt
+				magnam ipsam, esse autem corrupti quibusdam exercitationem, ab aperiam minus error id sint laborum
+				possimus neque magni? Neque modi error quis saepe voluptatem dolorum reiciendis dolores, eligendi,
+				numquam, possimus provident repellat qui consectetur doloremque! Impedit quos alias rerum amet?
+				Obcaecati excepturi voluptas dolor vitae, tenetur quod. Fugiat cum quis earum incidunt ducimus odit sunt
+				et nam excepturi quasi, non illum delectus voluptas aliquid placeat perferendis ab pariatur dolorem
+				molestias praesentium quas. Hic eos ea nesciunt enim exercitationem modi iure necessitatibus omnis
+				debitis. Dolorum consequuntur maxime pariatur reiciendis libero nobis blanditiis suscipit ipsum,
+				temporibus aperiam.
+			</div>
+		</div>
+		
+	</div>
+</body>
+</html>

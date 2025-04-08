@@ -1,0 +1,142 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+p{
+    color: #fff;
+}
+
+.my-salnted-one{
+    background-color: firebrick;
+    position: relative;
+    padding: 50px;
+    text-align: justify;
+}
+
+.my-salnted-one::before{
+  content: '';
+    position: absolute;
+    left: 0;
+    bottom: -60px;
+    overflow: visible;
+    width: 50%;
+    height: 200px;
+    background: firebrick;
+    z-index: -1;
+    -webkit-transform: skewY(10deg);
+    -moz-transform: skewY(10deg);
+    -ms-transform: skewY(10deg);
+    -o-transform: skewY(10deg);
+    transform: skewY(10deg);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: initial;
+}
+
+.my-salnted-one::after{
+  content: '';
+  position: absolute;
+  right: 0;
+  bottom: -60px;
+  overflow: visible;
+  width: 50%;
+  height: 200px;
+  background: firebrick;
+  z-index: -1;
+  -webkit-transform: skewY(10deg);
+  -moz-transform: skewY(-10deg);
+  -ms-transform: skewY(-10deg);
+  -o-transform: skewY(-10deg);
+  transform: skewY(-10deg);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: initial;
+}
+
+.my-slanted-two{
+    margin-top: 200px;
+    background-color:firebrick; 
+    background: linear-gradient(171deg, #ffffff 50%, firebrick 0%);
+/*    background: linear-gradient(171deg, #ffffff 50%, firebrick 0%);*/
+}
+
+.my-slanted-two p{
+    color: bisque;
+}
+
+.my-slanted-two-and-half{
+    background-color:firebrick;
+}
+
+.my-slanted-two-and-half p{
+    color: bisque;
+}
+
+
+.my-slanted-three {
+	background-color: firebrick;
+    position: relative;
+    padding: 50px;
+    text-align: justify;
+    margin-top: 300px;
+}
+
+.my-slanted-three::before{
+  content: '';
+  position: absolute;
+  left: 0;
+  top: -80px;
+  overflow: visible;
+  width: 50%;
+  height: 150px;
+  background-color: firebrick;
+  z-index: -1;
+  -webkit-transform: skewY(-10deg);
+  -moz-transform: skewY(-10deg);
+  -ms-transform: skewY(-10deg);
+  -o-transform: skewY(-10deg);
+  transform: skewY(-10deg);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: initial;
+}
+
+.my-slanted-three::after{
+  content: '';
+  position: absolute;
+  right: 0;
+  top: -80px;
+  overflow: visible;
+  width: 50%;
+  height: 150px;
+  background-color: firebrick;
+  z-index: -1;
+  -webkit-transform: skewY(10deg);
+  -moz-transform: skewY(10deg);
+  -ms-transform: skewY(10deg);
+  -o-transform: skewY(10deg);
+  transform: skewY(10deg);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: initial;
+}
+
+.my-salnted-four{
+    margin-top: 150px;
+    background-color: firebrick;
+    clip-path: ellipse(100% 55% at 48% 44%);
+    -webkit-clip-path: ellipse(100% 55% at 48% 40%);
+}
+
+.my-salnted-four p{
+    
+}
+
+
+
+
+
+
+
+
+
+
+

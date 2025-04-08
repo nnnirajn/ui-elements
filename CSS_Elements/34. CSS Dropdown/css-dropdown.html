@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Custom Dropdown</title>
+	<style>
+		/*hide the inputs/checkmarks and submenu*/
+		input.dropdown {
+			display: none;
+		}
+
+		ul.submenu {
+			max-height: 0;
+			transition: all 1s;
+			overflow: hidden;
+		}
+
+		/*position the label*/
+		label {
+			position: relative;
+			display: block;
+			cursor: pointer;
+		}
+
+		/*show the submenu when input is checked*/
+		input:checked ~ ul.submenu {
+			/* display: block; */
+			max-height: 150px;
+		    border: 1px solid red;
+			overflow-y: auto;
+		}
+	</style>
+</head>
+<body>
+	<input class="dropdown" id="check01" type="checkbox" name="menu" />
+	<label for="check01">Menu</label>
+	<ul class="submenu">
+		<li><a href="#">Item 1</a></li>
+		<li><a href="#">Item 2</a></li>
+		<li><a href="#">Item 3</a></li>
+		<li><a href="#">Item 4</a></li>
+	</ul>
+</body>
+</html>

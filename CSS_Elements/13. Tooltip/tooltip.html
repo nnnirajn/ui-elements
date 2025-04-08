@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Tooltip</title>
+	<style>
+		* {
+			padding: 0;
+			margin: 0;
+			box-sizing: border-box;
+		}
+
+		section {
+			text-align: center;
+		}
+
+		.tooltip {
+			text-decoration: none;
+			color: red;
+			font-size: 20px;
+			text-align: center;
+			display: inline-block;
+			margin-top: 60px;
+			position: relative;
+		}
+
+		.tooltip .tooltip-text {
+			visibility: hidden;
+			opacity: 0;
+			width: 160px;
+			font-family: 'Roboto-Regular';
+			background-color: #026baf;
+			color: #fff;
+			text-align: center;
+			border-radius: 6px;
+			padding: 7px;
+			position: absolute;
+			top: 20px;
+			left: -60px;
+			z-index: 1;
+			transition: all 0.5s;
+		}
+
+		.tooltip:hover .tooltip-text {
+			visibility: visible;
+			opacity: 1;
+		}
+	</style>
+</head>
+<body>
+	<section>
+		<a class="tooltip" href="javascript:void(0);">tooltip
+
+			<span class="tooltip-text">
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea est optio inventore maxime perspiciatis
+				eveniet eius tenetur officia debitis reiciendis.
+			</span>
+
+		</a>
+	</section>
+</body>
+</html>

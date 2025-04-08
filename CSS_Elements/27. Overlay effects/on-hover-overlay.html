@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>On hover overlay effect</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-wrap: wrap;
+        }
+
+        .box {
+            width: 300px;
+            height: 300px;
+            margin: 20px;
+/*            border: 1px solid #000;*/
+            position: relative;
+            overflow: hidden;
+            border-radius: 6px;
+            box-shadow: 2px 4px 8px 0 rgba(46,61,73,.6);
+            
+        }
+        
+        .inside {
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.5s;
+        }
+        
+        /*  fade-in  */
+        
+         .fade-in {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            opacity: 0;
+        }
+        
+        .box:hover .fade-in{
+            opacity: 1;
+        }
+        
+          /*    left    */
+
+        .left {
+            position: absolute;
+            top: 0px;
+            left: -300px;
+        }
+        
+        .box:hover .left{
+            left: 0px;
+        }
+        
+       /*  right */
+        
+        .right {
+            position: absolute;
+            top: 0px;
+            right: -300px;
+        }
+        
+        .box:hover .right{
+            right: 0px;
+        }
+        
+        /*  top */
+        
+         .top {
+            position: absolute;
+            top: -300px;
+            left: 0px;
+        }
+        
+        .box:hover .top{
+            top: 0px;
+        }
+        
+        /*  bottom */
+        
+         .bottom {
+            position: absolute;
+            bottom: -300px;
+            left: 0px;
+        }
+        
+        .box:hover .bottom{
+            bottom: 0px;
+        }
+        
+        /*    left-rotate    */
+
+        .left-rotate {
+            position: absolute;
+            top: 0px;
+            left: -300px;
+        }
+        
+        .box:hover .left-rotate{
+            left: 0px;
+            transform: rotate(360deg);
+        }
+        
+        /*    top-rotate    */
+
+        .top-rotate {
+            position: absolute;
+            top: -300px;
+            left: 0px;
+        }
+        
+        .box:hover .top-rotate{
+            top: 0px;
+            transform: rotate(360deg);
+        }
+        
+        /*    right-rotate    */
+
+        .right-rotate {
+            position: absolute;
+            right: -300px;
+            top: 0px;
+        }
+        
+        .box:hover .right-rotate{
+            right: 0px;
+            transform: rotate(360deg);
+        }
+        
+        /*    bottom-rotate    */
+
+        .bottom-rotate {
+            position: absolute;
+            bottom: -300px;
+            left: 0px;
+        }
+        
+        .box:hover .bottom-rotate{
+            bottom: 0px;
+            transform: rotate(360deg);
+        }
+        
+        /*  top-left */
+        
+         .top-left {
+            position: absolute;
+            top: -300px;
+            left: -300px;
+        }
+        
+        .box:hover .top-left{
+            top: 0px;
+            left: 0px;
+        }
+        
+        /*  top-right */
+        
+        .top-right {
+            position: absolute;
+            top: -300px;
+            right: -300px;
+        }
+        
+        .box:hover .top-right{
+            top: 0px;
+            right: 0px;
+        }
+        
+        /*  left-bottom */
+        
+        .left-bottom {
+            position: absolute;
+            bottom: -300px;
+            left: -300px;
+        }
+        
+        .box:hover .left-bottom{
+            bottom: 0px;
+            left: 0px;
+        }
+        
+        /*  right-bottom */
+        
+        .right-bottom {
+            position: absolute;
+            bottom: -300px;
+            right: -300px;
+        }
+        
+        .box:hover .right-bottom{
+            bottom: 0px;
+            right: 0px;
+        }
+        
+        /*  rotate top-right */
+        
+        .rotate-top-right {
+            position: absolute;
+            top: -300px;
+            right: -300px;
+        }
+        
+        .box:hover .rotate-top-right{
+            top: 0px;
+            right: 0px;
+            transform: rotate(360deg);
+        }
+        
+        /*  rotate top-left */
+        
+        .rotate-top-left {
+            position: absolute;
+            top: -300px;
+            left: -300px;
+        }
+        
+        .box:hover .rotate-top-left{
+            top: 0px;
+            left: 0px;
+            transform: rotate(360deg);
+        }
+        
+        /*  rotate bottom-left */
+        
+        .rotate-bottom-left {
+            position: absolute;
+            bottom: -300px;
+            left: -300px;
+        }
+        
+        .box:hover .rotate-bottom-left{
+            bottom: 0px;
+            left: 0px;
+            transform: rotate(360deg);
+        }
+        
+        /*  rotate bottom-right */
+        
+        .rotate-bottom-right {
+            position: absolute;
+            bottom: -300px;
+            right: -300px;
+        }
+        
+        .box:hover .rotate-bottom-right{
+            bottom: 0px;
+            right: 0px;
+            transform: rotate(360deg);
+        }
+        
+        /*  zoom */
+        
+        .zoom {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            transform: scale(0);
+        }
+        
+        .box:hover .zoom{
+            transform: scale(1);
+        }
+        
+        /*  rotate-zoom */
+        
+        .rotate-zoom {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            transform: scale(0) rotate(0deg);
+        }
+        
+        .box:hover .rotate-zoom{
+            transform: scale(1) rotate(360deg);
+        }
+        
+        /*  zoom-out */
+        
+        .zoom-out {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            transform: scale(3);
+            opacity: 0;
+        }
+        
+        .box:hover .zoom-out{
+            transform: scale(1);
+            opacity: 1;
+        }
+        
+        /*  rotate-zoom-out */
+        
+        .rotate-zoom-out {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            transform: scale(3) rotate(180deg);
+            opacity: 0;
+        }
+        
+        .box:hover .rotate-zoom-out{
+            transform: scale(1) rotate(0deg);
+            opacity: 1;
+        }
+        
+        /* left-skew */
+        
+        .left-skew {
+            position: absolute;
+            top: 0px;
+            left: -300px;
+            height: 100%;
+            width: 0%;
+            transform: skewX(-40deg);
+        }
+        
+         .left-skew h2{
+            transform: skewX(40deg);
+        }
+        
+        .box:hover .left-skew{
+            left: -150px;
+            width: 200%;
+        }
+        
+        /* right-skew */
+        
+        .right-skew {
+            position: absolute;
+            top: 0px;
+            right: -300px;
+            height: 100%;
+            width: 0%;
+            transform: skewX(40deg);
+        }
+        
+         .right-skew h2{
+            transform: skewX(-40deg);
+        }
+        
+        .box:hover .right-skew{
+            right: -150px;
+            width: 200%;
+        }
+        
+        /* bottom-skew */
+        
+        .bottom-skew {
+            position: absolute;
+            left: 0px;
+            bottom: -300px;
+            height: 0%;
+            width: 100%;
+            transform: skewY(40deg);
+        }
+        
+         .bottom-skew h2{
+            transform: skewY(-40deg);
+        }
+        
+        .box:hover .bottom-skew{
+            bottom: -150px;
+            height: 200%;
+        }
+        
+        /*  social-icon-from-bottom */
+        
+         .icon-bottom {
+            position: absolute;
+            bottom: -300px;
+            left: 0px;
+            align-items: flex-start !important; 
+        }
+         
+        .box:hover .icon-bottom{
+            bottom: -260px;
+             
+        }
+        
+        /*  social-icon-from-left */
+        
+         .icon-left {
+            position: absolute;
+            left: -300px;
+            top: 0px;
+            align-items: flex-start !important; 
+            writing-mode:vertical-rl;
+        }
+         
+        .box:hover .icon-left{
+            left: -260px;
+             
+        }
+        
+        /*  social-icon-from-right */
+        
+         .icon-right {
+            position: absolute;
+            right: -300px;
+            top: 0px;
+            align-items: flex-end !important; 
+            writing-mode:vertical-rl;
+        }
+         
+        .box:hover .icon-right{
+            right: -260px;
+             
+        }
+        
+        /*  half-overlay */
+        
+         .half-overlay {
+            position: absolute;
+            right: 0px;
+            top: 0px;
+             opacity: 0;
+        }
+         
+        .box:hover .half-overlay{
+            opacity: 1;
+            background:linear-gradient(180deg, transparent, rgba(255, 0, 166, 0.9));
+             
+        }
+        
+         /*    comming-soon    */
+        
+     .comming-soon{
+            background: linear-gradient(120deg, orangered, crimson);
+        }
+        .comming-soon h2{
+            animation-name: niraj;
+            animation-duration: 2s;
+            animation-timing-function: ease-in-out;
+            animation-iteration-count: infinite;
+            animation-fill-mode: both;
+            animation-direction: alternate;
+        }
+
+        @keyframes niraj{
+            0%{
+                transform: scale(0.5);
+            }
+            
+            100%{
+                transform: scale(1.5);
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+   <div class="box">
+        <div style="position: absolute; color: #fff; font-size:22px;">fade-in</div>
+        <img src="bangladesh-beautiful-fashion-1580272.jpg" alt="">
+        <div class="inside fade-in">
+            <h2>fade-in</h2>
+        </div>
+    </div>
+   
+    <div class="box">
+        <div style="position: absolute; color: #fff; font-size:22px;">left</div>
+        <img src="bangladesh-beautiful-fashion-1580272.jpg" alt="">
+        <div class="inside left">
+            <h2>left</h2>
+        </div>
+    </div>
+    
+    <div class="box">
+       <div style="position: absolute; color: #fff; font-size:22px;">right</div>
+        <img src="bangladesh-beautiful-fashion-1580272.jpg" alt="">
+        <div class="inside right">
+            <h2>right</h2>
+        </div>
+    </div>
+    
+     <div class="box">
+       <div style="position: absolute; color: #fff; font-size:22px;">top</div>
+        <img src="bangladesh-beautiful-fashion-1580272.jpg" alt="">
+        <div class="inside top">
+            <h2>top</h2>
+        </div>
+    </div>
+    
+     <div class="box">
+       <div style="position: absolute; color: #fff; font-size:22px;">bottom</div>
+        <img src="bangladesh-beautiful-fashion-1580272.jpg" alt="">
+        <div class="inside bottom">
+            <h2>bottom</h2>
+        </div>
+    </div>
+    
+    <div class="box">
+       <div style="position: absolute; color: #fff; font-size:22px;">left-rotate</div>
+        <img src="bangladesh-beautiful-fashion-1580272.jpg" alt="">
+        <div class="inside left-rotate">
+            <h2>left-rotate</h2>
+        </div>
+    </div>
+    
+    <div class="box">
+       <div style="position: absolute; color: #fff; font-size:22px;">top-rotate</div>
+        <img src="bangladesh-beautiful-fashion-1580272.jpg" alt="">
+        <div class="inside top-rotate">
+            <h2>top-rotate</h2>
+        </div>
+    </div>
+    
+    <div class="box">
+       <div style="position: absolute; color: #fff; font-size:22px;">right-rotate</div>
+        <img src="bangladesh-beautiful-fashion-1580272.jpg" alt="">
+        <div class="inside right-rotate">
+            <h2>right-rotate</h2>
+        </div>
+    </div>
+    
+    <div class="box">
+       <div style="position: absolute; color: #fff; font-size:22px;">bottom-rotate</div>
+        <img src="bangladesh-beautiful-fashion-1580272.jpg" alt="">
+        <div class="inside bottom-rotate">
+            <h2>bottom-rotate</h2>
+        </div>
+    </div>
+    
+     <div class="box">
+       <div style="position: absolute; color: #fff; font-size:22px;">top-left</div>
+        <img src="bangladesh-beautiful-fashion-1580272.jpg" alt="">
+        <div class="inside top-left">
+            <h2>top-left</h2>
+        </div>
+    </div>
+    
+     <div class="box">
+       <div style="position: absolute; color: #fff; font-size:22px;">top-right</div>
+        <img src="bangladesh-beautiful-fashion-1580272.jpg" alt="">
+        <div class="inside top-right">
+            <h2>top-right</h2>
+        </div>
+    </div>
+    
+    <div class="box">
+       <div style="position: absolute; color: #fff; font-size:22px;">left-bottom</div>
+        <img src="bangladesh-beautiful-fashion-1580272.jpg" alt="">
+        <div class="inside left-bottom">
+            <h2>left-bottom</h2>
+        </div>
+    </div>
+    
+    <div class="box">
+       <div style="position: absolute; color: #fff; font-size:22px;">right-bottom</div>
+        <img src="bangladesh-beautiful-fashion-1580272.jpg" alt="">
+        <div class="inside right-bottom">
+            <h2>right-bottom</h2>
+        </div>
+    </div>
+    
+    <div class="box">
+         <div style="position: absolute; color: #fff; font-size:22px;">rotate-top-left</div>
+        <img src="bangladesh-beautiful-fashion-1580272.jpg" alt="">
+        <div class="inside rotate-top-left">
+            <h2>rotate-top-left</h2>
+        </div>
+    </div>
+    
+     <div class="box">
+         <div style="position: absolute; color: #fff; font-size:22px;">rotate-top-right</div>
+        <img src="bangladesh-beautiful-fashion-1580272.jpg" alt="">
+        <div class="inside rotate-top-right">
+            <h2>rotate-top-right</h2>
+        </div>
+    </div>
+    
+    <div class="box">
+         <div style="position: absolute; color: #fff; font-size:22px;">rotate-bottom-left</div>
+        <img src="bangladesh-beautiful-fashion-1580272.jpg" alt="">
+        <div class="inside rotate-bottom-left">
+            <h2>rotate-bottom-left</h2>
+        </div>
+    </div>
+    
+    <div class="box">
+         <div style="position: absolute; color: #fff; font-size:22px;">rotate-bottom-right</div>
+        <img src="bangladesh-beautiful-fashion-1580272.jpg" alt="">
+        <div class="inside rotate-bottom-right">
+            <h2>rotate-bottom-right</h2>
+        </div>
+    </div>
+    
+    <div class="box">
+         <div style="position: absolute; color: #fff; font-size:22px;">zoom</div>
+        <img src="bangladesh-beautiful-fashion-1580272.jpg" alt="">
+        <div class="inside zoom">
+            <h2>zoom</h2>
+        </div>
+    </div>
+    
+    <div class="box">
+         <div style="position: absolute; color: #fff; font-size:22px;">rotate-zoom</div>
+        <img src="bangladesh-beautiful-fashion-1580272.jpg" alt="">
+        <div class="inside rotate-zoom">
+            <h2>rotate-zoom</h2>
+        </div>
+    </div>
+    
+    <div class="box">
+         <div style="position: absolute; color: #fff; font-size:22px;">zoom-out</div>
+        <img src="bangladesh-beautiful-fashion-1580272.jpg" alt="">
+        <div class="inside zoom-out">
+            <h2>zoom-out</h2>
+        </div>
+    </div>
+    
+    <div class="box">
+         <div style="position: absolute; color: #fff; font-size:22px;">rotate-zoom-out</div>
+        <img src="bangladesh-beautiful-fashion-1580272.jpg" alt="">
+        <div class="inside rotate-zoom-out">
+            <h2>rotate-zoom-out</h2>
+        </div>
+    </div>
+    
+    <div class="box">
+         <div style="position: absolute; color: #fff; font-size:22px;">left-skew</div>
+        <img src="bangladesh-beautiful-fashion-1580272.jpg" alt="">
+        <div class="inside left-skew">
+            <h2>left-skew</h2>
+        </div>
+    </div>
+    
+    <div class="box">
+         <div style="position: absolute; color: #fff; font-size:22px;">right-skew</div>
+        <img src="bangladesh-beautiful-fashion-1580272.jpg" alt="">
+        <div class="inside right-skew">
+            <h2>right-skew</h2>
+        </div>
+    </div>
+    
+    <div class="box">
+         <div style="position: absolute; color: #fff; font-size:22px;">bottom-skew</div>
+        <img src="bangladesh-beautiful-fashion-1580272.jpg" alt="">
+        <div class="inside bottom-skew">
+            <h2>bottom-skew</h2>
+        </div>
+    </div>
+    
+    
+    <div class="box">
+         <div style="position: absolute; color: #fff; font-size:22px;">icon-bottom</div>
+        <img src="bangladesh-beautiful-fashion-1580272.jpg" alt="">
+        <div class="inside icon-bottom">
+            <h2>add icon here..</h2>
+        </div>
+    </div>
+    
+    <div class="box">
+         <div style="position: absolute; color: #fff; font-size:22px;">icon-left</div>
+        <img src="bangladesh-beautiful-fashion-1580272.jpg" alt="">
+        <div class="inside icon-left">
+            <h2>add icon here..</h2>
+        </div>
+    </div>
+    
+    <div class="box">
+         <div style="position: absolute; color: #fff; font-size:22px;">icon-right</div>
+        <img src="bangladesh-beautiful-fashion-1580272.jpg" alt="">
+        <div class="inside icon-right">
+            <h2>add icon here..</h2>
+        </div>
+    </div>
+       
+       <div class="box">
+         <div style="position: absolute; color: #fff; font-size:22px;">half-overlay</div>
+        <img src="bangladesh-beautiful-fashion-1580272.jpg" alt="">
+        <div class="inside half-overlay">
+            <h2>half-overlay</h2>
+        </div>
+    </div>
+        
+    <div class="box">
+        <div class="inside comming-soon">
+            <h2>comming-soon</h2>
+            <h5 
+            style="position: absolute; right: 6px; bottom: 6px;"> 
+            All Rights Reserved,2019. &copy; Narkhede
+            </h5>
+        </div>
+    </div>
+
+
+    <script src="jquery.js"></script>
+<!--    <script src="tilt.jquery.min.js"></script>-->
+    <script>
+    $(document).ready(function(){
+         $('.box').tilt({
+             maxTilt:12
+         });
+    });
+    </script>
+</body>
+
+</html>

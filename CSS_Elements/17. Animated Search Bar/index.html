@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Animated Search Box</title>
+	<style>
+		*{
+			padding: 0;
+			margin: 0;
+			box-sizing: border-box;
+		}
+
+		.container {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100vh;
+		}
+
+		.input-box {
+			background-color: rgba(187, 253, 194, 77);
+			border: 1px solid green;
+			padding: 10px 12px;
+			border-radius: 4px;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			transition: all 1s;
+		}
+
+		.input-box img {
+			width: 24px;
+			height: 24px;
+			cursor: pointer;
+		}
+
+		.input-box input {
+			background-color: rgba(187, 253, 194, 77);
+			border: none;
+			outline: none;
+			font-size: 16px;
+			width: 0px;
+			transition: all 0.5s;
+		}
+
+		.input-box input:focus {
+			width: 500px;
+		}
+
+		.input-box:hover input{
+			width: 500px;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="input-box">
+			<input type="text" name="" id="">
+			<img src="search-icon.svg" alt="search icon">
+		</div>
+	</div>
+</body>
+</html>
