@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashed Effect</title>
+<style>
+    *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+    
+    .list-section{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .connected-li{
+        list-style-type: none;
+        counter-reset: section;
+    }
+    
+    .connected-li li{
+        font-size: 16px;
+        line-height: 24px;
+        color: #282828;
+        padding-bottom: 30px;
+        position: relative;
+    }
+    
+    .connected-li li::before {
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background-color: #00BFF2;
+        position: absolute;
+        top: -4px;
+        left: -50px;
+        z-index: 10;
+        color: #fff;
+        font-size: 14px;
+        line-height: 30px;
+        text-align: center;
+        counter-increment: section;
+        content: counter(section);
+}
+    
+    .connected-li li::after {
+        content: "";
+        position: absolute;
+        left: -36px;
+        top: 0px;
+        bottom: 0px;
+        z-index: 0;
+        border-left: 2px dotted #00BFF2;
+}
+    
+    .connected-li li:last-of-type::after{
+        display: none;
+    }
+
+</style>
+</head>
+<body>
+   
+   <section class="list-section">
+    <ul class="connected-li">
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+        <li>Item 4</li>
+        <li>Item 5</li>
+        <li>Item 6</li>
+    </ul>
+   </section>
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+    
+</body>
+</html>

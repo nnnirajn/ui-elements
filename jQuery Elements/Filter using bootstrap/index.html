@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Filter using bootstrap 4</title>
+	<!-- Meta Elements -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="">
+    <!--  Fonts -->
+    <link rel="stylesheet" href="css/fonts.css">
+    <!--  Icon  -->
+    <link rel="stylesheet" href="css/font-awesome.css">
+    <!--  Third-party css -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <!--  main style  -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+   
+    <section class="work-section">
+       <div class="container">
+           <div class="row">
+               <div class="list">
+                   <ul>
+                     <li class="active" data-filter="*">All</li>
+                     <li data-filter=".red">Red</li>
+                     <li data-filter=".green">Green</li>
+                     <li data-filter=".blue">Blue</li>
+                     <li data-filter=".yellow">Yellow</li>
+                     <li data-filter=".orange">Orange</li>
+                   </ul>
+               </div>
+           </div>
+       </div>   
+       <div class="container">
+           <div class="row grid">
+               <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 grid-item  green red" >
+                   <div class="item-box">
+                       <h3>red , green</h3>
+                   </div>
+               </div>
+               <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 grid-item blue" >
+                   <div class="item-box">
+                        <h3>blue</h3>
+                   </div>
+               </div>
+               <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 grid-item orange red" >
+                   <div class="item-box">
+                        <h3>red , orange</h3>
+                   </div>
+               </div>
+               <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 grid-item blue" >
+                   <div class="item-box">
+                        <h3>blue</h3>
+                   </div>
+               </div>
+               <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 grid-item red" >
+                   <div class="item-box">
+                        <h3>red</h3>
+                   </div>
+               </div>
+               <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 grid-item blue" >
+                   <div class="item-box">
+                        <h3>blue</h3>
+                   </div>
+               </div>
+               <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 grid-item yellow">
+                   <div class="item-box">
+                        <h3>yellow</h3>
+                   </div>
+               </div>
+               <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 grid-item yellow" >
+                   <div class="item-box">
+                        <h3>yellow</h3>
+                   </div>
+               </div>
+               <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 grid-item green blue" >
+                   <div class="item-box">
+                        <h3>blue , green</h3>
+                   </div>
+               </div>
+           </div>
+       </div> 
+    </section> 
+    
+    
+    
+    
+    
+    
+    <!--  Jquery  -->
+    <script src="js/jquery-3.4.1.js"></script>
+    <script src="js/jquery-migrate-1.4.1.js"></script>
+    <!--  Third party js  -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="js/isotop.js"></script>
+    <!--   Main js  -->
+    <script src="js/main.js"></script>
+</body>
+</html>

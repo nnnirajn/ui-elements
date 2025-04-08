@@ -1,0 +1,55 @@
+/* Basic Styling Start */
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	outline: none;
+}
+
+body {
+	-webkit-font-smoothing: antialiased;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+.container {
+	width: 100%;
+	padding: 0px 15px;
+	margin: 0 auto;
+}
+
+.container-fuild {
+	width: 100%;
+}
+
+img {
+	max-width: 100%;
+}
+
+ul {
+	list-style-type: none;
+}
+
+input,
+select {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+}
+
+/* Basic Styling End */
+
+.main-section .row {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	column-gap: 15px;
+}
+
+.boxy {
+	border: 1px solid red;
+	background-color: lavenderblush;
+	width: calc(33.33% - 30px);
+}

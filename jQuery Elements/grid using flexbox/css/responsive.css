@@ -1,0 +1,92 @@
+/* Responsive CSS Start Here */
+/* Media queries for structure */
+
+@media (min-width:576px) {
+    .container {
+        max-width: 540px;
+    }
+    .container-fuild{
+        max-width: 100%;
+    }
+}
+
+@media (min-width: 768px) {
+    .container {
+        max-width: 720px;
+    }
+    .container-fuild{
+        max-width: 100%;
+    }
+}
+
+@media (min-width: 992px) {
+ .container {
+        max-width: 960px;
+}
+.container-fuild{
+    max-width: 100%;
+}
+}
+
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1140px;
+}
+.container-fuild{
+    max-width: 100%;
+}
+}
+
+@media (min-width: 1400px) {
+    .container {
+        max-width: 1320px;
+    }
+    .container-fuild{
+        max-width: 100%;
+    }
+}
+
+@media (min-width: 1620px) {
+    .container {
+        max-width: 1920px;
+    }
+    .container-fuild{
+        max-width: 100%;
+    }
+}
+/* Media queries for element */
+
+@media (max-width: 992px) {
+    .boxy {
+         width: calc(50% - 30px);
+    }
+}
+
+@media (max-width: 768px) {
+    .row {
+        flex-direction: column;
+        align-items: center;
+    }
+    .boxy {
+        width: calc(50% - 30px);
+   }
+}
+
+@media (max-width:576px) {
+    .container {
+        max-width: 100%;
+    }
+    .container-fuild{
+        max-width: 100%;
+    }
+    .row {
+        margin-left: 0px; 
+        margin-right: 0px;
+    }
+    .boxy {
+        width:100%;
+        margin-right: 0px;
+        margin-left: 0px;
+   }
+
+}
