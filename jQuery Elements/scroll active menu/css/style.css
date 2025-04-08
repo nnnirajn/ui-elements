@@ -1,0 +1,58 @@
+/* Default css start */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* Default css End */
+
+nav{
+    background-color: #000;
+    position: sticky;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+}
+
+nav ul{
+    list-style-type: none;
+    text-align: center;
+}
+
+nav ul li{
+    display: inline;
+}
+
+nav ul li a{ 
+    display: inline-block;
+    color: #fff;
+    padding: 20px;
+    text-decoration: none;
+    text-transform: uppercase;
+        
+}
+
+.section1,.section2,.section3,.section4,.section5,.section6 {
+	height: 600px;
+}
+
+.main-nav li a.active{
+    color: deeppink;
+    background: green;
+}
+
+.active {
+	color: black;
+}
+
+section{
+    padding-top: 60px;
+}
+
+section:first-of-type{
+    margin-top: -60px !important;
+}
+
+
+
+

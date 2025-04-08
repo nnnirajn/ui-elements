@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Swiper slider demo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.6/css/swiper.min.css">
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        
+        h2{
+            text-align: center;
+            margin: 30px 0px;
+        }
+        
+        /*   Basic Slider demo   */
+        
+        .basic-swipre-slider{
+            width: 100%;
+            height: 500px;
+        }
+        
+        .swiper-wrapper{
+            width: 100%;
+            height: 500px;
+        }
+        
+        .slider-box{
+            background-image: url('https://picsum.photos/seed/picsum/1920/400');
+            background-position: center;
+            background-size: cover;
+            height: 100%;
+        }
+        
+      /*  custom navigation and pagination */
+        
+         .custom-navi-pagi-swipre-slider .swiper-pagination-bullet {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    border-radius: 100%;
+    background: #000;
+    opacity: .2;
+    line-height: 20px;
+    color: #fff;
+}
+        
+        .custom-navi-pagi-swipre-slider .swiper-pagination-bullet-active {
+    opacity: 1;
+    background: red;
+}      
+        
+        .custom-navi-pagi-swipre-slider .swiper-button-next:after,
+        .custom-navi-pagi-swipre-slider .swiper-button-prev:after {
+          display: none;
+        }
+        
+        
+    .custom-navi-pagi-swipre-slider .swiper-button-prev {
+    background-image: url(https://icons.iconarchive.com/icons/paomedia/small-n-flat/512/sign-left-icon.png) !important;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 40px;
+}
+
+   .custom-navi-pagi-swipre-slider .swiper-button-next {
+  background-image: url(https://icons.iconarchive.com/icons/paomedia/small-n-flat/512/sign-left-icon.png) !important;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 40px;
+    transform: rotateY(180deg);
+}    
+        
+/*       zoom out slider   */
+        
+.zoom-out-slider {
+  width: 100%;
+  height: 100%;
+}
+
+.zoom-out-slider .swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.zoom-out-slider .swiper-slide > .swiper-slide-cover {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: transparent no-repeat 50% 50% /cover;
+}
+.zoom-out-slider {
+  width: 100%;
+  height: 500px;
+}
+
+.zoom-out-slider .swiper-slide .slide1 {
+  background-image: url(https://picsum.photos/800/400?image=670);
+  transform-origin: 0 100%;
+}
+
+.zoom-out-slider .swiper-slide .slide2 {
+  background-image: url(https://picsum.photos/800/400?image=837);
+  transform-origin: 100% 100%;
+}
+
+.zoom-out-slider .swiper-slide .slide3 {
+  background-image: url(https://picsum.photos/800/400?image=947);
+  transform-origin: 100% 0;
+}
+
+.zoom-out-slider .swiper-slide .slide4 {
+  background-image: url(https://picsum.photos/750/250?image=945);
+  transform-origin: 0 100%;
+}
+.swiper-scale-effect .swiper-slide-cover {
+  transition: 10s ease-out;
+  transform: scale(1.2);
+}
+
+.swiper-scale-effect .swiper-slide.swiper-slide-active .swiper-slide-cover {
+  transform: scale(1);
+}
+        
+        /* smooth fade effects  */
+        
+        .nice-parallax {
+          height: 500px;
+            width: 100%;
+        }
+
+       .nice-parallax .swiper-slide {
+          overflow: hidden;
+        }
+        
+      .nice-parallax .slide-inner {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      left: 0;
+      top: 0;
+      background-size: cover;
+      background-position: center;
+    }
+    
+    </style>
+</head>
+<body>
+    
+    <!-- Basic Swiper Slider -->
+    
+    <h2>Basic Swiper slider</h2>
+    
+<div class="swiper-container basic-swipre-slider" id="basic-swipre-slider">
+    <!-- Additional required wrapper -->
+    <div class="swiper-wrapper">
+        <!-- Slides -->
+        <div class="swiper-slide">
+            <div class="slider-box">
+                
+            </div>
+        </div>
+        <div class="swiper-slide">
+            <div class="slider-box">
+                
+            </div>
+        </div>
+        <div class="swiper-slide">
+            <div class="slider-box">
+               
+            </div>
+        </div>
+    </div>
+    <!-- If we need pagination -->
+    <div class="swiper-pagination"></div>
+
+    <!-- If we need navigation buttons -->
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+
+</div>
+    
+    <!-- Custom navigation and pagination swiper slider  -->
+    
+     <h2> Custom navi / pagi Swiper slider</h2>
+    
+    <div class="swiper-container custom-navi-pagi-swipre-slider" id="custom-navi-pagi-swipre-slider">
+    <!-- Additional required wrapper -->
+    <div class="swiper-wrapper">
+        <!-- Slides -->
+        <div class="swiper-slide">
+            <div class="slider-box">
+                
+            </div>
+        </div>
+        <div class="swiper-slide">
+            <div class="slider-box">
+                
+            </div>
+        </div>
+        <div class="swiper-slide">
+            <div class="slider-box">
+               
+            </div>
+        </div>
+    </div>
+    <!-- If we need pagination -->
+    <div class="swiper-pagination"></div>
+
+    <!-- If we need navigation buttons -->
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+
+</div>
+    
+   <!-- awesome zoom out effect using swiper slider   -->
+   
+   <h2>Zoom out slider</h2>
+   
+   <div class="swiper-container swiper-scale-effect zoom-out-slider" id="zoom-out-slider">
+    <!-- Additional required wrapper -->
+    <div class="swiper-wrapper">
+        <!-- Slides -->
+        <div class="swiper-slide">
+      <div class="slide1 swiper-slide-cover"></div>
+      <div>Slide 1</div>
+    </div>
+    <div class="swiper-slide">
+      <div class="slide2 swiper-slide-cover"></div>
+      <div>Slide 2</div>
+    </div>
+    <div class="swiper-slide">
+      <div class="slide3 swiper-slide-cover"></div>
+      <div>Slide 3</div>
+    </div>
+    <div class="swiper-slide">
+      <div class="slide4 swiper-slide-cover"></div>
+      <div>Slide 4></div>
+    </div>
+    </div>
+    <!-- If we need pagination -->
+    <div class="swiper-pagination"></div>
+
+    <!-- If we need navigation buttons -->
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+
+    <!-- If we need scrollbar -->
+    <div class="swiper-scrollbar"></div>
+</div>
+   
+   <h2> smooth fade effect</h2>
+    
+    <div class="swiper-container smooth-fade-effect" id="smooth-fade-effect">
+    <!-- Additional required wrapper -->
+    <div class="swiper-wrapper">
+        <!-- Slides -->
+        <div class="swiper-slide">
+            <div class="slider-box">
+                
+            </div>
+        </div>
+        <div class="swiper-slide">
+            <div class="slider-box">
+                
+            </div>
+        </div>
+        <div class="swiper-slide">
+            <div class="slider-box">
+               
+            </div>
+        </div>
+    </div>
+    <!-- If we need pagination -->
+    <div class="swiper-pagination"></div>
+
+    <!-- If we need navigation buttons -->
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+
+</div>
+    
+    <h2> Nice Parallax effect</h2>
+    
+    <div class="swiper-container nice-parallax" id="nice-parallax">
+    <!-- Additional required wrapper -->
+    <div class="swiper-wrapper">
+        <!-- Slides -->
+        <div class="swiper-slide">
+            <div class="slide-inner" style="background-image:url(https://pp.userapi.com/c637331/v637331691/48f5f/spHnV42iYVw.jpg)"></div>
+        </div>
+        <div class="swiper-slide">
+            <div class="slide-inner" style="background-image:url(https://pp.userapi.com/c637331/v637331691/48f5f/spHnV42iYVw.jpg)"></div>
+        </div>
+        <div class="swiper-slide">
+            <div class="slide-inner" style="background-image:url(https://pp.userapi.com/c637331/v637331691/48f5f/spHnV42iYVw.jpg)"></div>
+        </div>
+    </div>
+    <!-- If we need pagination -->
+    <div class="swiper-pagination"></div>
+
+    <!-- If we need navigation buttons -->
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+
+</div>
+
+
+    
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-migrate-3.3.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.6/js/swiper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TweenMax.min.js"></script>
+    <script>
+  $(document).ready(function () {
+  // Basic Swiper slider
+      var mySwiper = new Swiper ('#basic-swipre-slider', {
+    
+    speed: 1000,  
+    effect: 'slide', 
+//    effect: 'fade', 
+//    effect: 'cube', 
+//    effect: 'coverflow', 
+//    effect: 'flip', 
+      
+    navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+      
+    pagination: {
+    el: '.swiper-pagination',
+    type: 'bullets',
+    clickable: 'true', 
+  },  
+      
+  });
+      
+      // custom navigation and pagination
+      
+      var mySwiper = new Swiper ('#custom-navi-pagi-swipre-slider', {
+    
+    speed: 1000,  
+    navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+      
+    pagination: {
+    el: '.swiper-pagination',
+    clickable: 'true', 
+    type: 'bullets', 
+//    type: 'fraction',      
+    renderBullet: function (index, className) {
+          return '<span class="' + className + '">' + (index + 1) + '</span>';
+        },
+//    dynamicBullets: true,    
+  },
+      
+      
+});
+      
+      // zoom out slidre
+      
+      var mySwiper = new Swiper('#zoom-out-slider', {
+  spaceBetween: 30,
+  centeredSlides: true,
+  effect: 'fade',
+  autoplay: {
+    delay: 8500,
+  },
+  pagination: {
+    el: '.swiper-pagination',
+    clickable: true,
+  },
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+});
+      
+      // smooth fade effect 
+      
+      class SwiperDemo {
+  constructor() {
+    this.currentTransitionSpeed = 0;
+    this.init();
+  }
+
+  getTransitionSpeed() {
+    const transitionSpeed = this.currentTransitionSpeed;
+    // don't forget to reset the variable for future calls
+    this.currentTransitionSpeed = 0;
+    return transitionSpeed;
+  }
+
+  /*
+    A weird way to find this out but I've found no other.
+    Checks if the progress on the active slide is 1 or -1 which happens when swiper navigates to next/previous slide on click and keybord navigation.
+    If not then the slider is being dragged, so we get the right index by finding the startTranslate from touchEvents in array of transitions the swiper snaps to.
+    The startTranslate doesn't exist on initial load so we use the initialSlide index instead.
+    */
+  getActiveIndexBeforeTransitionStart(swiper, slides) {
+    const isDragging = !Math.abs(slides[swiper.activeIndex].progress === 1);
+    if (isDragging) {
+      return swiper.slidesGrid.indexOf(
+      -swiper.touchEventsData.startTranslate || swiper.params.initialSlide);
+
+    } else {
+      return swiper.activeIndex;
+    }
+  }
+
+  getDirection(animationProgress) {
+    if (animationProgress === 0) {
+      return "NONE";
+    } else if (animationProgress > 0) {
+      return "NEXT";
+    } else {
+      return "BACK";
+    }
+  }
+
+  progress(swiper, progress) {
+
+
+
+
+  } /* 
+    if you need to change something for each progress
+    do it here (progress variable is always in range from 0 to 1) representing progress of the whole slider 
+    */ /*
+        this is a function for the setTransition swiper event. Can be used for setting the CSS transition duration on slides or wrapper. Sometimes called when the change is supposed to be animated, sometimes not called if the change should be immediate (e.g. dragging the slider)
+       */setTransition(swiper, transitionSpeed) {
+    this.currentTransitionSpeed = transitionSpeed;
+    // console.log("transition", transitionSpeed);
+  }
+
+  setTranslate(swiper, wrapperTranslate) {
+    const durationInSeconds = this.getTransitionSpeed() / 1000;
+    // convert slides object to plain array
+    const slides = Object.values(swiper.slides).slice(0, -1);
+
+    // get the index of the slide active before transition start (activeIndex changes halfway when dragging)
+    const originIndex = this.getActiveIndexBeforeTransitionStart(
+    swiper,
+    slides);
+
+    // get information about animation progress from the active slide - the active slide's value is always -1 to 1.
+    /* 
+    every slide has a progress attribute equal to the "distance" from the current active index.
+    */
+    const animationProgress = slides[originIndex].progress;
+    // you can then get the drag direction like so:
+    const direction = this.getDirection(animationProgress);
+    // console.log(direction);
+
+    // do magic with each slide
+    slides.map((slide, index) => {
+      // to put the slides behind each other we have to set their CSS translate accordingly since by default they are arranged in line.
+      const offset = slide.swiperSlideOffset;
+      let x = -offset;
+      if (!swiper.params.virtualTranslate) x -= swiper.translate;
+      let y = 0;
+      if (!swiper.isHorizontal()) {
+        y = x;
+        x = 0;
+      }
+      TweenMax.set(slide, {
+        x,
+        y });
+
+
+      // do our animation stuff!
+      const clip = (val, min, max) => Math.max(min, Math.min(val, max));
+      const ZOOM_FACTOR = 0.05;
+
+      const opacity = Math.max(1 - Math.abs(slide.progress), 0);
+
+      const clippedProgress = clip(slide.progress, -1, 1);
+      const scale = 1 - ZOOM_FACTOR * clippedProgress;
+
+      // you can do your CSS animation instead of using tweening.
+      TweenMax.to(slide, durationInSeconds, {
+        scale,
+        opacity });
+
+    });
+  }
+
+  init() {
+    const that = this;
+    this.swiper = new Swiper(".smooth-fade-effect", {
+      // -----unrelated settings start -----
+      grabCursor: false,
+      keyboard: true,
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev" },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+
+      // -----unrelated settings end -----
+      speed: 1000,
+      watchSlidesProgress: true,
+      virtualTranslate: true,
+      effect: "myCustomTransition",
+      on: {
+        progress(progress) {
+          const swiper = this;
+          if (swiper.params.effect !== "myCustomTransition") return;
+          that.progress(swiper, progress);
+        },
+        setTransition(transition) {
+          const swiper = this;
+          if (swiper.params.effect !== "myCustomTransition") return;
+          that.setTransition(swiper, transition);
+        },
+        setTranslate(translate) {
+          const swiper = this;
+          if (swiper.params.effect !== "myCustomTransition") return;
+          that.setTranslate(swiper, translate);
+        } } });
+
+
+  }}
+      const demo = new SwiperDemo();
+      
+      // Nice Parallax effect
+      
+      var interleaveOffset = 0.5;
+
+      var swiperOptions = {
+      loop: true,
+      speed: 1000,
+      grabCursor: false,
+      watchSlidesProgress: true,
+      mousewheelControl: true,
+      keyboardControl: true,
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev"
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      on: {
+        progress: function() {
+          var swiper = this;
+          for (var i = 0; i < swiper.slides.length; i++) {
+            var slideProgress = swiper.slides[i].progress;
+            var innerOffset = swiper.width * interleaveOffset;
+            var innerTranslate = slideProgress * innerOffset;
+            swiper.slides[i].querySelector(".slide-inner").style.transform =
+              "translate3d(" + innerTranslate + "px, 0, 0)";
+          }      
+        },
+        touchStart: function() {
+          var swiper = this;
+          for (var i = 0; i < swiper.slides.length; i++) {
+            swiper.slides[i].style.transition = "";
+          }
+        },
+        setTransition: function(speed) {
+          var swiper = this;
+          for (var i = 0; i < swiper.slides.length; i++) {
+            swiper.slides[i].style.transition = speed + "ms";
+            swiper.slides[i].querySelector(".slide-inner").style.transition =
+              speed + "ms";
+          }
+        }
+      }
+    };
+
+      var swiper = new Swiper("#nice-parallax", swiperOptions);
+      
+});      
+  </script>
+</body>
+</html>

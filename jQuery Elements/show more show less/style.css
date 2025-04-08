@@ -1,0 +1,23 @@
+body {
+  font-family: 'Open Sans',Arial, Helvetica, sans-serif;
+}
+
+a.showMore {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-top: 20px;
+  color: #0077C8;
+  text-decoration: none;
+}
+a.showMore::after {
+  content: '+ VIEW MORE';
+}
+a.showMore.showLess::after {
+  content: '- VIEW LESS';
+}
+
+h4 {
+  margin: 0px 0px 4px 0px;
+}
