@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
+	<link rel="stylesheet" href="style.css">
+	<title>Complete Form Validation</title>
+</head>
+<body>
+
+	<form>
+		<div class="input-box">
+			<label for="inputName">Enter Your Name</label>
+			<input type="text" name="inputName" id="inputName" class="input-field">
+			<i class="fa " aria-hidden="true"></i>
+			<span class="error-msg"></span>
+		</div>
+
+		<div class="input-box">
+			<label for="inputUsername">Enter Your Username</label>
+			<input type="text" name="inputUsername" id="inputUsername" class="input-field">
+			<i class="fa " aria-hidden="true"></i>
+			<span class="error-msg"></span>
+		</div>
+
+		<div class="input-box">
+			<label for="inputUserEmail">Enter Your Email</label>
+			<input type="email" name="inputUserEmail" id="inputUserEmail" class="input-field">
+			<span class="error-msg"></span>
+		</div>
+
+		<div class="input-box">
+			<label for="inputUserNumber">Enter Your Mobile Number</label>
+			<input type="number" name="inputUserNumber" id="inputUserNumber" class="input-field">
+			<span class="error-msg"></span>
+		</div>
+
+		<div class="input-box">
+			<label for="inputUserPassword">Enter Your Password</label>
+			<input type="password" name="inputUserPassword" id="inputUserPassword" class="input-field">
+			<span class="error-msg"></span>
+		</div>
+
+		<div class="input-box">
+			<label for="confirmPassword">Confirm Your Password</label>
+			<input type="password" name="confirmPassword" id="confirmPassword" class="input-field">
+			<span class="error-msg"></span>
+		</div>
+
+		<div class="input-box">
+			<label id="inputUserSex">Sex</label>
+			<input type="radio" name="inputUserSex" id="inputUserSexMale" value="male"> Male
+			<input type="radio" name="inputUserSex" id="inputUserSexFemale" value="female"> Female
+			<span class="error-msg"></span>
+		</div>
+
+		<div class="input-box">
+			<label for="inputCountry">Select Your Country</label>
+			<select name="inputCountry" id="inputCountry">
+				<option value="">select</option>
+				<option value="in">India</option>
+				<option value="usa">USA</option>
+				<option value="eng">England</option>
+				<option value="aus">Australia</option>
+			</select>
+			<span class="error-msg"></span>
+		</div>
+
+		<div class="input-box">
+			<label id="inputUserLanguage" for="inputLanguage">Language</label>
+			<input type="checkbox" name="inputLanguage" value="english"> English
+			<input type="checkbox" name="inputLanguage" value="hindi"> Hindi
+			<span class="error-msg"></span>
+		</div>
+
+		<div class="input-box">
+			<label for="inputMessage">Message</label>
+			<textarea name="inputMessage" id="inputMessage" cols="10" rows="3"></textarea>
+			<span class="error-msg"></span>
+		</div>
+
+		<div class="input-box">
+			<label for="inputZip">Enter Your ZIP Code</label>
+			<input type="number" name="inputZip" id="inputZip" class="input-field">
+			<span class="error-msg"></span>
+		</div>
+
+		<input type="submit" id="formSubmit" value="Submit">
+		<input type="reset" id="formClear" value="Clear">
+	</form>
+
+
+	<script src="script.js"></script>
+</body>
+</html>

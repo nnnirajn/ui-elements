@@ -1,0 +1,13 @@
+* {
+	padding: 0px;
+	margin: 0;
+	box-sizing: border-box;
+  }
+  
+  body {
+	padding: 25px;
+  }
+  
+  label {
+	cursor:pointer;
+  }

@@ -1,0 +1,21 @@
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+.scroll-top {
+	position: fixed;
+	bottom: 15px;
+	right: 15px;
+	padding: 15px;
+	background-color: orange;
+	cursor: pointer;
+	display: none;
+	border: 1px solid orange;
+}
+
+.scroll-top.active {
+	display: block;
+}
+

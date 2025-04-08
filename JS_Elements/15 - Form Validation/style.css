@@ -1,0 +1,49 @@
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	outline: none;
+  }
+  
+  body {
+	padding: 20px;
+  }
+  
+  .input-box {
+	margin-bottom: 20px;
+  }
+  
+  label {
+	color: red;
+  }
+  
+  
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+  }
+  
+  .input-box.success .input-field {
+	border: 1px solid green;
+  }
+  
+  .input-box.success .error-msg {
+	display: none;
+  }
+  
+  .input-box.success .fa {
+	color: green;
+  }
+  
+  .input-box.failed .input-field {
+	border: 1px solid red;
+  }
+  
+  .input-box.failed .error-msg {
+	color: red;
+  }
+  
+  .input-box.failed .fa {
+	color: red;
+  }

@@ -1,0 +1,32 @@
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+  }
+  
+  body {
+	padding: 20px;
+  }
+  
+  .text-box {
+	width: fit-content;
+	border: 1px solid #000;
+	background-color: #ccc;
+	padding: 5px;
+	margin-bottom: 20px;
+  }
+  
+  code {
+	display: inline-block;
+	margin-right: 15px;
+  }
+  
+  .paste-box {
+	width: 315px;
+	min-height: 30px;
+	border: 1px solid #000;
+	background-color: #ccc;
+	padding: 5px;
+	display: block;
+	margin-top: 10px;
+  }

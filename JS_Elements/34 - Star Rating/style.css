@@ -1,0 +1,55 @@
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;	
+}
+
+.star-rating-wrapper {
+	max-width: 500px;
+	margin: 10% auto;
+	text-align: center;
+}
+
+.star-rating-wrapper h2 {
+	padding-bottom: 20px;
+	font-size: 32px;
+}
+
+.star-rating-wrapper img {
+	min-height: 300px;
+}
+
+.star-rating-box {
+	margin-top: 20px;
+}
+
+.star-rating-box i {
+	font-size: 50px;
+}
+
+.star-rating-box ul {
+	list-style: none;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	column-gap: 20px;
+}
+
+.star-rating-wrapper .rating-value {
+	padding: 10px 12px;
+	background-color: brown;
+	color: #fff;
+	margin-top: 20px;
+}
+
+.yellow {
+	color: yellow;
+}
+
+.orange {
+	color: orangered;
+}
+
+button {
+	margin-top: 24px;
+}
