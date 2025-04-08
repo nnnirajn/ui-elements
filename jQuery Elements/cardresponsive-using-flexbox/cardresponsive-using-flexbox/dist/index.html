@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Card - responsive using flexbox</title>
+  <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cards - Responsive Cards using flexbox</title>
+    <script></script>
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cards - Responsive Cards using flexbox</title>
+    <script></script>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        
+        img{
+            max-width: 100%;
+        }
+        
+        .card-wrapper{
+            width: 1140px;
+            max-width: 100%;
+            margin: 0 auto;
+        }
+        
+        .card-heading-section h3{
+            font-size: 24px;
+            text-align: center;
+        }
+        
+        .card-heading-section h4{
+            font-size: 20px;
+            text-align: center;
+        }
+        
+        .card-body-section{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        
+        .card-box{
+            width: 340px;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+        
+        .card-box-inner {
+	      border: 1px solid red;
+            height: 400px;
+            position: relative;
+            overflow: hidden;
+            margin: 0px 0px 30px 0px;
+}
+        
+        .card-box:hover .read-more {
+	         color: red;
+       }
+        
+        .card-box h5{
+            font-size: 20px;
+        }
+        
+        .card-box h5 p{
+            font-size: 18px;
+        }
+          
+        .card-cta-box{
+            position: absolute;
+            left: 0px;
+            bottom: 0px;
+            right: 0px;
+            background-color: #fff;
+            
+         }
+        
+        .card-cta-box::before{
+            content: "";
+            position: absolute;
+            bottom: 99%;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: linear-gradient(rgba(255,255,255,0), rgba(255,255,255,1));
+        }
+        
+        .read-more{
+            font-size: 14px;
+            color: #ccc;
+            background-color: #fff;
+            padding: 10px 15px;
+            display: inline-block;
+            margin: 15px 0px 15px 0px;
+            text-decoration: none;
+        }
+        
+        .whole-card-clickable{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            text-indent: -9999px;
+            overflow: hidden;
+        }
+        
+        @media only screen and (max-width: 1040px){
+            .card-body-section{
+            justify-content: space-around;
+        }
+        }
+        
+/*
+        @media only screen and (max-width: 640px){
+            .card-box:first-of-type{
+            margin-right: 0px;    
+        }
+        
+        .card-box:last-of-type{
+            margin-left: 0px; 
+        }
+        }
+*/
+    </style>
+</head>
+<body>
+    
+    <div class="card-wrapper">
+       <div class="card-heading-section">
+         <h3>This is main heading</h3>
+         <h4>This is sub heading</h4>
+       </div>
+        
+       <div class="card-body-section">
+         
+          <div class="card-box">
+            <div class="card-box-inner">
+              <img src="https://i.picsum.photos/id/0/300/180.jpg" alt="">
+              <h5>card heading</h5>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia quidem commodi numquam repudiandae perspiciatis vero soluta, adipisci voluptatem. Fugiat quae deleniti dolore quas dicta alias provident doloribus quia, at! Quam consequatur quibusdam, animi doloremque expedita, molestiae similique tempora illo et perspiciatis dolorem qui quae eius eveniet fugiat sed in aperiam! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi similique velit reprehenderit harum hic vel beatae sapiente. Vitae et modi aliquid sed ad, eos laborum in sint, officiis praesentium cumque repellendus similique mollitia minus impedit nulla quis quod facere qui quae veniam? Reiciendis, obcaecati totam itaque animi, cum autem dolore unde iusto explicabo rem illo! Velit cupiditate quia, eum reprehenderit. Consequuntur voluptates sequi in fugiat dolores, itaque eligendi eos fugit maiores accusantium libero aperiam, ab culpa quis provident ipsum deleniti molestiae unde eaque molestias. Vero eligendi, eveniet doloremque tempore temporibus esse a ipsa mollitia at ratione obcaecati, fuga iste recusandae.</p>
+              <div class="card-cta-box">
+                  <a class="read-more" href="javascript:void(0);">Read more</a>
+              </div>
+              <a class="whole-card-clickable" href="https://www.google.com/"></a>
+          </div>
+          </div> 
+         
+          <div class="card-box">
+             <div class="card-box-inner">
+              <img src="https://i.picsum.photos/id/0/300/180.jpg" alt="">
+              <h5>card heading</h5>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia quidem commodi numquam repudiandae perspiciatis vero soluta, adipisci voluptatem. Fugiat quae deleniti dolore quas dicta alias provident doloribus quia, at! Quam consequatur quibusdam, animi doloremque expedita, molestiae similique tempora illo et perspiciatis dolorem qui quae eius eveniet fugiat sed in aperiam! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi similique velit reprehenderit harum hic vel beatae sapiente. Vitae et modi aliquid sed ad, eos laborum in sint, officiis praesentium cumque repellendus similique mollitia minus impedit nulla quis quod facere qui quae veniam? Reiciendis, obcaecati totam itaque animi, cum autem dolore unde iusto explicabo rem illo! Velit cupiditate quia, eum reprehenderit. Consequuntur voluptates sequi in fugiat dolores, itaque eligendi eos fugit maiores accusantium libero aperiam, ab culpa quis provident ipsum deleniti molestiae unde eaque molestias. Vero eligendi, eveniet doloremque tempore temporibus esse a ipsa mollitia at ratione obcaecati, fuga iste recusandae.</p>
+              <div class="card-cta-box">
+                  <a class="read-more" href="javascript:void(0);">Read more</a>
+              </div>
+              <a class="whole-card-clickable" href="https://www.google.com/"></a>
+          </div>
+           </div>
+          
+          <div class="card-box">
+             <div class="card-box-inner">
+              <img src="https://i.picsum.photos/id/0/300/180.jpg" alt="">
+              <h5>card heading</h5>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia quidem commodi numquam repudiandae perspiciatis vero soluta, adipisci voluptatem. Fugiat quae deleniti dolore quas dicta alias provident doloribus quia, at! Quam consequatur quibusdam, animi doloremque expedita, molestiae similique tempora illo et perspiciatis dolorem qui quae eius eveniet fugiat sed in aperiam! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi similique velit reprehenderit harum hic vel beatae sapiente. Vitae et modi aliquid sed ad, eos laborum in sint, officiis praesentium cumque repellendus similique mollitia minus impedit nulla quis quod facere qui quae veniam? Reiciendis, obcaecati totam itaque animi, cum autem dolore unde iusto explicabo rem illo! Velit cupiditate quia, eum reprehenderit. Consequuntur voluptates sequi in fugiat dolores, itaque eligendi eos fugit maiores accusantium libero aperiam, ab culpa quis provident ipsum deleniti molestiae unde eaque molestias. Vero eligendi, eveniet doloremque tempore temporibus esse a ipsa mollitia at ratione obcaecati, fuga iste recusandae.</p>
+              <div class="card-cta-box">
+                  <a class="read-more" href="javascript:void(0);">Read more</a>
+              </div>
+              <a class="whole-card-clickable" href="https://www.google.com/"></a>
+          </div>
+           </div>
+         
+       </div>  
+    </div>
+    
+</body>
+</html>
+<!-- partial -->
+  
+</body>
+</html>

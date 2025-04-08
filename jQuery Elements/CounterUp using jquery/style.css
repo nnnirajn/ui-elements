@@ -1,0 +1,30 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.counter{
+    list-style-type: none;
+    width: 100%;
+    background-color: deeppink;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    text-align: center;
+    padding: 30px 0px;
+}
+
+.counter li{
+   width: 33%;
+}
+
+.counter li span{
+    color: #fff;
+    font-size: 60px;
+}
+
+#counter span.percent:after {
+  content: "%";
+  display: inline-block;
+}

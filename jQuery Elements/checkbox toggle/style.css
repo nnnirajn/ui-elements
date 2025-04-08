@@ -1,0 +1,15 @@
+.red {color: red;}
+
+.simple{
+    width: 150px;
+    height: 150px;
+    background-color: salmon;
+    transition: all 1s;
+}
+
+.checkked{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background-color: crimson;
+}
