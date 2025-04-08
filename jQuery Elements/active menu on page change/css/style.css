@@ -1,0 +1,40 @@
+/* Default css start */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* Default css End */
+ul{
+    list-style-type: none;
+    text-align: center;
+}
+
+ul li {
+    display: inline;
+}
+
+ul li a{
+    display: inline-block;
+    text-decoration: none;
+    text-transform: capitalize;
+    font-size: 22px;
+    padding: 20px 0px;
+    margin-left: 20px;
+}
+
+ul li a:hover{
+    border-bottom: 2px solid #000;
+}
+
+
+ul li a.active{
+    border-bottom: 2px solid #000;
+}
+
+
+
+
+
+
+

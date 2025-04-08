@@ -1,0 +1,114 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+.toast {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+}
+
+.toast__message {
+  position: relative;
+  width: 300px;
+  min-height: 50px;
+  border-radius: 5px;
+  border: 1px solid;
+  margin-top: 10px;
+  margin-right: 10px;
+  padding: 0.4em 0.5em;
+  font-size: 14px;
+  font-family: Roboto, Arial, sans-serif;
+  line-height: 1.25;
+  box-shadow: 1px 1px 4px gray;
+  transition: all 0.3s ease;
+}
+
+.toast__message-title {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 0.4em;
+}
+
+.toast__message-cross-icon {
+  position: absolute;
+  top: 0;
+  right: 0.5em;
+  width: 0.8em;
+  height: 0.8em;
+  padding-top: inherit;
+  transform: translateY(10%);
+  cursor: pointer;
+}
+
+.toast__message--hidden {
+/* for providing animation on toast  */
+  transform: scale(0);
+  opacity: 0;
+}
+
+.toast__message--success {
+  background: #CDFFA7;
+  border-color: #48a700;
+  color: #1c4100;
+}
+.toast__message--success .toast__message-cross-icon {
+  color: #327400;
+}
+
+.toast__message--info {
+  background: #A7FFE4;
+  border-color: #00a774;
+  color: #00412d;
+}
+.toast__message--info .toast__message-cross-icon {
+  color: #007450;
+}
+
+.toast__message--warning {
+  background: #FFFAA7;
+  border-color: #a79e00;
+  color: #413d00;
+}
+.toast__message--warning .toast__message-cross-icon {
+  color: #746d00;
+}
+
+.toast__message--error {
+  background: #FFA7A7;
+  border-color: #a70000;
+  color: #740000;
+}
+.toast__message--error .toast__message-cross-icon {
+  color: #a70000;
+}
+
+.buttons {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+  font-size: 16px;
+  font-family: Roboto, Arial, sans-serif;
+  border-radius: 5px;
+  padding: 0.2em 0.6em;
+  color: #fff;
+}
+
+button:not(:last-of-type) {
+  margin-right: 0.4em;
+}
+
+.button__success {
+  background: #48a700;
+  border-bottom-color: #48a700;
+  border-right-color: #48a700;
+  border-left-color: #4fb600;
+  border-top-color: #4fb600;
+}
