@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - POP up animation</title>
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>popup with animation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <style>
+        section{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        
+        a{
+            display: inline-block;
+        }
+        
+        @keyframes ds {
+    0% {
+        visibility: visible;
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        visibility: hidden;
+        opacity: 0;
+        display: none;
+    }
+}
+        
+        /************Modal styling Start********/
+
+.modal {
+    position: absolute;
+    z-index: 10000;
+    top: 0;
+    left: 0;
+    visibility: hidden;
+    transition: all 2s;
+    
+    /* popup with zoom in / zoom out animation */
+   /* transform: scale(0); */
+    
+    /* popup with fade in / out animation */
+   opacity: 0;
+    
+    /* popup with top in / out animation */
+/*     transform: translateY(-50px); */
+/*     opacity: 0; */
+    
+    /* popup with left in / out animation */
+/*     transform: translateX(-50px); */
+/*     opacity: 0; */
+    
+    /* popup with rotating | zoom in / out animation  */
+/*       transform: scale(0)rotate(360deg);*/
+/*       transform-origin: center;*/
+/*        opacity: 0;*/
+       
+    
+    width: 100%;
+    height: 100%;
+	background-color: #0000002f;
+}
+
+.modal.is-visible {
+    visibility: visible;
+    
+     /* popup with zoom in / zoom out animation */
+    /* transform: scale(1); */
+    
+    /* popup with fade in / out animation */
+    opacity: 1;
+    
+    /* popup with top in / out animation */
+/*     transform: translateY(0px);*/
+/*     opacity: 1;*/
+    
+     /* popup with left in / out animation */
+/*     transform: translateX(0px); */
+/*     opacity: 1;*/
+    
+     /* popup with rotating | zoom in / out animation  */
+/*       transform: scale(0.5)rotate(0deg);*/
+/*       transform-origin: center;*/
+/*       opacity: 1;*/
+    
+     /*  Autmatically popup will disappear after 4s  */
+         /* animation: ds 4s both;  */
+
+}
+
+.modal-wrapper {
+    position: absolute;
+    z-index: 9999;
+    top: 39%;
+    left: 48%;
+    transform: translate(-50%, -50%) !important;
+    width: 500px;
+    max-width: 100%;
+    margin: 0 auto;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: -8px 0px;
+}
+
+.modal-header,
+.modal-content {
+    padding: 16px 16px 8px 16px;
+}
+
+.modal-header {
+    position: relative;
+    background-color: #fff;
+    text-align: center;
+}
+
+.modal-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 16px;
+    color: #aaa;
+    background: none;
+    border: 0;
+    font-size: 22px;
+}
+
+.modal-close:hover {
+    color: #777;
+}
+
+.modal-heading {
+    text-align: center;
+    border: 2px solid #16b050;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    padding-top: 35px;
+}
+
+.modal-body {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.modal-body h2 {
+    color: #16b050;
+    font-size: 45px;
+    font-family: 'Yellowtail-Regular';
+}
+
+.modal-body h4 {
+    color: #206493;
+    font-size: 17px !important;
+}
+
+.modal-content h4{
+    text-transform: capitalize !important;
+    letter-spacing: 1px;
+}
+
+.faq-one .faq-detail input[type="email"]:focus::placeholder {
+  color: transparent;
+}
+
+.faq-one .faq-detail textarea:focus::placeholder {
+    color: transparent;
+}
+
+/************Modal styling End********/
+        
+    </style>
+</head>
+<body>
+   
+   <section>
+      <a class="btn" id="popup" href="javascript:void(0);">click me</a>
+      <a class="btn" id="" href="https://www.google.com">click me2</a>
+      
+      
+       <div class="modal" id="modal">
+          <div class="modal-wrapper modal-transition">
+              <div class="modal-header">
+                 <button class="modal-close modal-toggle" id="modal-toggle">
+                     <i class="fa fa-close"></i>
+                </button>
+<!--<h2 class="modal-heading"> <i class="fa fa-check"></i>  </h2>-->
+                <img src="http://dev.project-progress.net/html/order-status-updated/images/right-icon.PNG" alt="right icon">
+             </div>
+
+              <div class="modal-body">
+                <div class="modal-content">
+                  <h2>Thank You!</h2>    
+                  <h4>Your Question has been submitted.</h4>
+                </div>
+               </div>
+           </div>
+        </div>
+      
+   </section>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
+    <script>
+        $(document).ready(function(){
+             
+            $('#popup').click(function(){
+                $('#modal').toggleClass('is-visible');
+            });
+            
+            $('#modal-toggle').click(function(){
+                $('#modal').toggleClass('is-visible');
+            });
+        });
+    </script>
+    
+</body>
+</html>
+<!-- partial -->
+  
+</body>
+</html>

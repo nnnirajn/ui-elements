@@ -1,0 +1,8 @@
+.popup-gallery a {
+  display: inline-block;
+  width: 25%;
+}
+.popup-gallery a img {
+  height: auto;
+  width: 100%;
+}

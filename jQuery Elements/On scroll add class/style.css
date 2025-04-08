@@ -1,0 +1,29 @@
+body {
+  height: 100%;
+  width: 100%;
+  background-color:lightblue;
+}
+
+.wrapper {
+  width:800px;
+  height:1500px;
+  padding:15px;
+  margin:0px auto;
+}
+
+#dynamic {
+  width:500px;
+  border:dashed white;
+  border-radius:10%;
+  padding:3em;
+  font-family:helvetica, arial;
+  font-weight:bold;
+  font-size:1.5em;
+  font-height:1.5em;
+  margin:0px auto;
+}
+
+.newClass {
+  border:none;
+  background-color:orange;
+}

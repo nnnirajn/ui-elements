@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Notification On click</title>
+  
+  <style>
+      *{
+          padding: 0;
+          margin: 0;
+          box-sizing: border-box;
+      }
+      
+      body{
+          background-color: cornflowerblue;
+          height: 100vh;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+      }
+      
+      .show-hidden-menu{
+          color: #fff;
+          font-size: 24px;
+          text-transform: capitalize;
+          cursor: pointer;
+      }
+      
+      .hidden-menu{
+          background-color: #000;
+          border-radius: 5px;
+          padding: 10px;
+          margin: 10px;
+          visibility: hidden;
+          opacity: 0;
+          transition: all 0.5s;
+      }
+      
+      .hidden-menu ul{
+          list-style-type: none;
+      }
+      
+      .hidden-menu ul li{
+          color: #fff;
+          font-size: 20px;
+      }
+      
+      .hidden-menu.show-hide{
+          visibility: visible;
+          opacity: 1;
+      }
+      
+  </style>
+
+</head>
+<body>
+
+<div id="show-hidden-menu" class="show-hidden-menu">Show</div>
+
+<div class="hidden-menu">
+  <ul>
+    <li>List item 1</li>
+    <li>List item 2</li>
+    <li>List item 3</li>
+  </ul>
+</div>
+
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+  <script  src="script.js"></script>
+
+</body>
+</html>
