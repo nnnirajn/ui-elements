@@ -1,0 +1,51 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.main{
+    display: flex;
+    justify-content: space-around;
+}
+
+.test{
+    order: 2;
+}
+
+.boxes{
+    order: 1;
+}
+
+#buttons a {
+    display: inline-block;
+    padding: 20px;
+    color: white;
+    text-decoration: none;
+    background-color: pink;
+}
+
+#pages div {
+    display: none;
+}
+
+#pages div {
+    padding: 40px;
+    color: white;
+}
+
+#pages div#one {
+    background-color: purple;
+}
+
+#pages div#two {
+    background-color: blue;
+}
+
+#pages div#three {
+    background-color: orange;
+}
+
+#buttons a.selected {
+    background-color: red;
+}

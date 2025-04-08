@@ -1,0 +1,55 @@
+/* Default css start */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* Default css End */
+
+nav ul {
+    list-style-type: none;
+    text-align: right;
+    position: fixed;
+    top: 2px;
+    right: 0px;
+    width: 100%;
+    background-color: chocolate;
+}
+
+nav ul li{
+    display: inline;
+}
+
+nav ul li a{
+    display: inline-block;
+    text-decoration: none;
+    margin: 10px 10px;
+    color: #fff;
+}
+
+.section-one{
+    background-color: blue;
+    margin-top: 60px;
+    height: 600px;
+    
+}
+.section-two{
+    background-color: coral;
+    height: 600px;
+}
+.section-three{
+    background-color: darkgoldenrod;
+    height: 600px;
+}
+.section-four{
+    background-color: deeppink;
+    height: 600px;
+}
+.section-five{
+    background-color: darkorange;
+    height: 600px;
+}
+.section-six{
+    background-color: forestgreen;
+    height: 600px;
+}

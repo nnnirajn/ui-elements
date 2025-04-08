@@ -1,0 +1,164 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.step-form-box{
+    width: 100%;
+    height: 100vh;
+    background-color: #36454F;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.step-form-inner{
+    width: 60%;
+    background-color: #536872;
+}
+
+.current-info{
+    display: none;
+}
+
+.steps ul{
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.steps ul li{
+    display: inline-block;
+    width: 25%;
+    background-color: beige;
+    margin-right: 1%;
+    transition: all 0.5s;
+}
+
+.steps ul li.current {
+	background-color: darkcyan;
+}
+
+.steps ul li:hover{
+    background-color: lightgrey;
+}
+
+.steps ul li:hover a{
+    color: crimson;
+}
+
+.steps ul li:last-of-type{
+    margin-right: 0%;
+}
+
+.steps ul li a{
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    color: brown;
+    text-transform: capitalize;
+    padding: 22px 0px;
+}
+
+.title{
+    display: none;
+}
+
+.form-field {
+    display: block !important;
+    margin-bottom: 20px !important;
+    border: 1px solid red !important;
+}
+
+.content{
+    text-align: center;
+}
+
+
+.error{
+    color: red;
+}
+
+label{
+    display: block;
+    padding: 10px 0px 10px 5px;
+    color: #fff;
+    font-size: 18px;   
+}
+
+.actions{
+    text-align: center;
+    margin: 20px 0px;
+}
+
+.actions ul{
+    list-style-type: none;
+}
+
+.actions ul li{
+    display: inline;
+}
+
+.actions ul li a{
+    display: inline-block;
+    text-decoration: none;
+    color: #fff;
+    background-color: #000;
+    width: 100px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    border-radius: 15px;
+}
+
+.actions ul li a:hover{
+    background-color: brown;
+}
+
+.actions ul li:first-of-type a{
+    margin-right: 20px;
+}
+
+.sucess-msg{
+    display: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
