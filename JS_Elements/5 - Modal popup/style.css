@@ -1,143 +1,138 @@
 * {
-	padding: 0;
-	margin: 0;
-	box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
-section{
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	height: 100vh;
+section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
-a{
-	display: inline-block;
+a {
+  display: inline-block;
 }
 
 @keyframes ds {
-	0% {
-		visibility: visible;
-	}
+  0% {
+    visibility: visible;
+  }
 
-	90% {
-		opacity: 1;
-	}
+  90% {
+    opacity: 1;
+  }
 
-	100% {
-		visibility: hidden;
-		opacity: 0;
-		display: none;
-	}
+  100% {
+    visibility: hidden;
+    opacity: 0;
+    display: none;
+  }
 }
 
 /************Modal styling Start********/
 
 .modal {
-position: absolute;
-z-index: 10000;
-top: 0;
-left: 0;
-visibility: hidden;
-transition: visibility 0.4s;
+  position: absolute;
+  z-index: 10000;
+  top: 0;
+  left: 0;
+  visibility: hidden;
+  width: 100%;
+  height: 100%;
+  background-color:  #4747475e;
+  transition: opacity 0.4s, transform 0.4s, visibility 0.4s;
 
-/* popup with zoom in / zoom out animation */
-transform: scale(0);
+  /* popup with zoom in / zoom out animation */
+  /* transform: scale(0); */
 
-/* popup with fade in / out animation */
-   /* opacity: 0; */
+  /* popup with fade in / out animation */
+  opacity: 0;
 
-/* popup with top in / out animation */
-/*     transform: translateY(-50px); */
-/*     opacity: 0; */
+  /* popup with top in / out animation */
+  /* transform: translateY(-50px);
+  opacity: 0; */
 
-/* popup with left in / out animation */
-/*     transform: translateX(-50px); */
-/*     opacity: 0; */
+  /* popup with left in / out animation */
+  /*     transform: translateX(-50px); */
+  /*     opacity: 0; */
 
-/* popup with rotating | zoom in / out animation  */
-/*       transform: scale(0)rotate(360deg);*/
-/*       transform-origin: center;*/
-/*        opacity: 0;*/
-
-	width: 100%;
-	height: 100%;
-	background-color: #0000005e;
+  /* popup with rotating | zoom in / out animation  */
+  /* transform: scale(0) rotate(360deg);
+  transform-origin: center;
+  opacity: 0; */
 }
 
 .modal.is-visible {
-visibility: visible;
+  visibility: visible;
 
+  /* popup with zoom in / zoom out animation */
+  /* transform: scale(1); */
 
-/* popup with zoom in / zoom out animation */
-transform: scale(1);
+  /* popup with fade in / out animation */
+  opacity: 1;
 
-/* popup with fade in / out animation */
-    /* opacity: 1; */
+  /* popup with top in / out animation */
+  /* transform: translateY(0px);
+  opacity: 1; */
 
-/* popup with top in / out animation */
-/*     transform: translateY(0px);*/
-/*     opacity: 1;*/
+  /* popup with left in / out animation */
+  /*     transform: translateX(0px); */
+  /*     opacity: 1;*/
 
-/* popup with left in / out animation */
-/*     transform: translateX(0px); */
-/*     opacity: 1;*/
+  /* popup with rotating | zoom in / out animation  */
+  /* transform: scale(1) rotate(0deg);
+  transform-origin: center;
+  opacity: 1; */
 
-/* popup with rotating | zoom in / out animation  */
-/*       transform: scale(0.5)rotate(0deg);*/
-/*       transform-origin: center;*/
-/*       opacity: 1;*/
-
-/*  Autmatically popup will disappear after 4s  */
-        /* animation: ds 4s both; */
-
+  /*  Autmatically popup will disappear after 4s  */
+  /* animation: ds 4s both; */
 }
 
 .modal-wrapper {
-	position: absolute;
-	z-index: 9999;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%) !important;
-	width: 500px;
-	max-width: 100%;
-	margin: 0 auto;
-	background-color: #fff;
-	border: 1px solid #ccc;
-	padding: 8px 0px;
+  position: absolute;
+  z-index: 9999;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) !important;
+  width: 500px;
+  max-width: 100%;
+  margin: 0 auto;
+  background-color: #fff;
+  border: 1px solid #ccc;
 }
 
 .modal-header,
 .modal-content {
-	padding: 16px 16px 8px 16px;
+  padding: 16px 16px 8px 16px;
 }
 
 .modal-header {
-	position: relative;
-	background-color: #fff;
-	text-align: center;
+  position: relative;
+  background-color: #fff;
+  text-align: center;
 }
 
 .modal-close {
-	position: absolute;
-	top: 0;
-	right: 0;
-	padding: 16px;
-	color: #aaa;
-	background: none;
-	border: 0;
-	font-size: 22px;
-	cursor: pointer;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 16px;
+  color: #aaa;
+  background: none;
+  border: 0;
+  font-size: 22px;
+  cursor: pointer;
 }
-
 
 .modal-body {
-	text-align: center;
-	margin-bottom: 30px;
-	padding: 24px;
+  text-align: center;
+  margin-bottom: 30px;
+  padding: 24px;
 }
 
-.modal-content h4{
-	text-transform: capitalize !important;
-	letter-spacing: 1px;
+.modal-content h4 {
+  text-transform: capitalize !important;
+  letter-spacing: 1px;
 }
