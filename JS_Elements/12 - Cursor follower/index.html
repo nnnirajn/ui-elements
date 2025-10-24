@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Basic Cursix Cursor</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/cursix/dist/cursix.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
+    <script src="https://unpkg.com/cursix/dist/cursix.min.js"></script>
+  </head>
+  <body>
+    <!-- Example 1 -->
+    <!-- Just  Initialise Cursix-->
+
+    <!-- Example 2 | text inside cursor -->
+    <div data-cursor-text="Click!" class="text">
+      Hover me to show text in cursor
+    </div>
+
+    <!-- Example 3 | image inside cursor -->
+    <div data-cursor-img="https://picsum.photos/200">Hover to see image</div>
+
+    <!-- Example 4 | video inside cursor -->
+    <div data-cursor-video="https://www.w3schools.com/html/mov_bbb.mp4">
+      Hover to play video in cursor 🎥
+    </div>
+
+    <!-- Example 5 | custom cursor design -->
+    <div data-cursor="abc">Hover me to turn cursor yellow</div>
+
+    <!-- Initialise Cursix  -->
+    <script>
+      // Initialize cursix
+      // const cursor = new Cursix();
+
+      // Set skewing
+      // cursor.setSkewing(100);
+
+      // add custom classes
+      const cursor = new Cursix();
+    </script>
+  </body>
+</html>
