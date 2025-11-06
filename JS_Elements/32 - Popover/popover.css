@@ -1,0 +1,112 @@
+/* Tooltip styles */
+.tooltip {
+  position: fixed;
+  background: var(--tooltip-bg);
+  color: var(--tooltip-color);
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  z-index: 50;
+  opacity: 0;
+  pointer-events: none;
+  max-width: 20rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  transition: opacity var(--animation-duration) ease-in-out;
+}
+.tooltip.visible {
+  opacity: 1;
+}
+
+/* Popover styles */
+.popover {
+  position: fixed;
+  background: var(--popover-bg);
+  color: var(--popover-color);
+  border: 1px solid var(--popover-border);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  z-index: 40;
+  opacity: 0;
+  pointer-events: none;
+  width: 20rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  transition: all var(--animation-duration) ease-in-out;
+  transform: scale(0.95);
+}
+.popover.visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: scale(1);
+}
+.popover-header {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--popover-border);
+}
+.popover-body {
+  line-height: 1.5;
+}
+
+/* Arrow styles */
+.tooltip::before,
+.popover::before {
+  content: "";
+  position: absolute;
+  width: 0.75rem;
+  height: 0.75rem;
+  transform: rotate(45deg);
+  background: inherit;
+}
+[data-position="top"]::before {
+  bottom: -0.375rem;
+  left: 50%;
+  margin-left: -0.375rem;
+}
+[data-position="bottom"]::before {
+  top: -0.375rem;
+  left: 50%;
+  margin-left: -0.375rem;
+}
+[data-position="left"]::before {
+  right: -0.375rem;
+  top: 50%;
+  margin-top: -0.375rem;
+}
+[data-position="right"]::before {
+  left: -0.375rem;
+  top: 50%;
+  margin-top: -0.375rem;
+}
+.popover[data-position]::before {
+  border: 1px solid var(--popover-border);
+}
+/* Theme variations */
+.tooltip[data-theme="dark"] {
+  --tooltip-bg: #1a202c;
+  --tooltip-color: #fff;
+  border: 1px solid #e2e8f0;
+}
+
+.tooltip[data-theme="light"] {
+  --tooltip-bg: white;
+  --tooltip-color: #2d3748;
+  border: 1px solid #e2e8f0;
+}
+.tooltip[data-theme="info"] {
+  --tooltip-bg: #3182ce;
+  --tooltip-color: #fff;
+}
+.tooltip[data-theme="success"] { 
+  --tooltip-bg: #38a169;
+  --tooltip-color: #fff;
+}
+.tooltip[data-theme="warning"] {
+  --tooltip-bg: #d69e2e;
+  --tooltip-color: #fff;
+}
+.tooltip[data-theme="error"] {
+  --tooltip-bg: #e53e3e;
+  --tooltip-color: #fff;
+}

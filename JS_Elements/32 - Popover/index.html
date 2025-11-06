@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./popover.css" />
+    <link rel="stylesheet" href="./style.css" />
+    <title>Popover</title>
+  </head>
+  <body>
+    <!-- Tooltip -->
+    <h4>Tooltip</h4>
+    <button
+      data-tooltip="HTML <strong>supported</strong>"
+      data-position="right"
+      data-theme="dark"
+    >
+      HTML Content
+    </button>
+
+    <button
+      data-tooltip="HTML <strong>supported</strong>"
+      data-position="top"
+      data-theme="success"
+    >
+      HTML Content
+    </button>
+
+    <br /><br />
+
+    <!-- Popover -->
+    <h4>Popover</h4>
+    <div class="popover-wrapper">
+      <button
+        data-popover-title="Custom Width"
+        data-popover-content="This popover has a custom width of 300px"
+        data-position="bottom"
+        data-width="300"
+        data-theme="dark"
+      >
+        Custom Width
+      </button>
+    </div>
+    <!-- js -->
+    <script src="./show-tips.min.js"></script>
+    <script src="./script.js"></script>
+  </body>
+</html>
