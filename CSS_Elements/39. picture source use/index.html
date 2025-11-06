@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTML Picture & Source Elements Demo</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+        line-height: 1.6;
+      }
+      .container {
+        text-align: center;
+        margin: 30px 0;
+      }
+      .image-container {
+        margin: 20px 0;
+        border: 1px solid #ddd;
+        padding: 15px;
+        border-radius: 8px;
+        background-color: #f9f9f9;
+      }
+      h1 {
+        color: #2c3e50;
+      }
+      .code {
+        background-color: #f0f0f0;
+        padding: 15px;
+        border-radius: 5px;
+        text-align: left;
+        overflow-x: auto;
+        margin: 20px 0;
+      }
+      .note {
+        background-color: #e7f4ff;
+        border-left: 4px solid #4a90e2;
+        padding: 10px 15px;
+        margin: 20px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="note">
+        <p>
+          Resize your browser window to see different images load based on
+          screen width.
+        </p>
+      </div>
+
+      <div class="image-container">
+        <h2>Responsive Image Example</h2>
+        <picture>
+          <!-- For viewport width 1000px and up -->
+          <source
+            media="(min-width: 1000px)"
+            srcset="https://picsum.photos/1000/600?random=1"
+            type="image/jpeg"
+          />
+
+          <!-- For viewport width 600px and up -->
+          <source
+            media="(min-width: 600px)"
+            srcset="https://picsum.photos/600/400?random=2"
+            type="image/jpeg"
+          />
+
+          <!-- Default image (for viewport width less than 600px) -->
+          <img
+            src="https://picsum.photos/400/300?random=3"
+            alt="Responsive image example"
+            style="max-width: 100%; height: auto; border-radius: 5px"
+          />
+        </picture>
+      </div>
+    </div>
+  </body>
+</html>

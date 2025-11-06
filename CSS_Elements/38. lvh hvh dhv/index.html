@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IVH HVH DHV</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        width: 100vw;
+        min-height: 100vh;
+        margin: 0;
+        font-family: Arial, sans-serif;
+        padding: 20px;
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      h1 {
+        text-align: center;
+        margin-bottom: 30px;
+        color: #333;
+      }
+
+      .box {
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 8px;
+        color: white;
+        text-align: center;
+        font-weight: bold;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      }
+
+      .lvh-box {
+        background-color: #4CAF50;
+        height: 50lvh;
+      }
+
+      .hvh-box {
+        background-color: #2196F3;
+        height: 50hvh;
+      }
+
+      .dvh-box {
+        background-color: #9C27B0;
+        height: 50dvh;
+      }
+
+      .explanation {
+        background-color: #f8f9fa;
+        padding: 20px;
+        border-radius: 8px;
+        margin-top: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Viewport Height Units Demo</h1>
+      
+      <div class="box lvh-box">
+        <h2>Large Viewport Height (50lvh)</h2>
+        <p>This box is 50% of the large viewport height</p>
+      </div>
+      
+      <div class="box hvh-box">
+        <h2>Small Viewport Height (50hvh)</h2>
+        <p>This box is 50% of the small viewport height</p>
+      </div>
+      
+      <div class="box dvh-box">
+        <h2>Dynamic Viewport Height (50dvh)</h2>
+        <p>This box is 50% of the dynamic viewport height</p>
+      </div>
+
+      <div class="explanation">
+        <h3>Viewport Height Units Explained:</h3>
+        <ul>
+          <li><strong>LVH (Large Viewport Height):</strong> 1lvh is 1% of the large viewport height (excludes browser UI elements when they're visible)</li>
+          <li><strong>HVH (Small Viewport Height):</strong> 1hvh is 1% of the small viewport height (includes browser UI elements)</li>
+          <li><strong>DVH (Dynamic Viewport Height):</strong> 1dvh is 1% of the dynamic viewport height (adjusts automatically as browser UI appears/disappears)</li>
+        </ul>
+        <p><em>Try resizing your browser window or showing/hiding browser UI elements to see the differences.</em></p>
+      </div>
+    </div>
+  </body>
+</html>

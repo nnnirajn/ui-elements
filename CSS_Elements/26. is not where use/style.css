@@ -1,0 +1,55 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* ******* :is() ******* */
+
+/* Without :is() */
+header p,
+header h1,
+header h2 {
+  color: blue;
+}
+
+/* With :is() */
+header :is(p, h1, h2) {
+  color: blue;
+}
+
+/* ******* :not() ******* */
+
+/* Select all paragraphs that are not inside a div */
+p:not(div p) {
+  color: red;
+}
+
+/* Select all buttons that are not disabled */
+button:not([disabled]) {
+  cursor: pointer;
+}
+
+/* ******* :where() ******* */
+
+/* Select all paragraphs that are not inside a div */
+/* The specificity of :where() is always 0 */
+/* This makes it easier to override styles */
+
+article :where(h1, h2, h3) {
+  margin: 0;
+}
+
+/* ******* :has() ******* */
+/* Select an article element that has an h1 as a child */
+article:has(h1) {
+  background: lightgray;
+}
+
+/* Select a div that contains a paragraph with class "highlight" */
+div:has(p.highlight) {
+  border: 2px solid blue;
+}
+
+/* :has() https://youtu.be/ObIfoYg32ns?si=1imj-RXwc0kR9bcE */
+/* :is() https://youtu.be/5yqtvH_euCY?si=KzTOjUflDAvt_wD4 */
