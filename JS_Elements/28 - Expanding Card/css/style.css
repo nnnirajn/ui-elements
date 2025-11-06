@@ -1,0 +1,35 @@
+/* Default css start */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.wrapper {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  height: 80vh;
+  gap: 10px;
+}
+
+.wrapper img {
+  width: 10%;
+  height: 100%;
+  object-fit: cover;
+  transition: all 0.5s ease-in-out;
+  border-radius: 20px;
+}
+
+.wrapper img.active {
+  width: calc(60% - 40px);
+}
