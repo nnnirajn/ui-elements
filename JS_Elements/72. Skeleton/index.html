@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skeleton Mammoth Demo</title>
+    <link rel="stylesheet" href="./skeleton.css">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .card {
+            background: #2a2a2a;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .card__image {
+            aspect-ratio: 16/10;
+            background: #333;
+            display: block;
+        }
+
+        .card__image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .card__body {
+            padding: 1rem 1.25rem;
+        }
+
+        .card__title {
+            margin: 0 0 0.5rem;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .card__subtitle {
+            margin: 0;
+            font-size: 0.9rem;
+            opacity: 0.85;
+            line-height: 1.4;
+            color: #fff;
+        }
+
+        .text-section {
+            max-width: 640px;
+            margin: 0 auto;
+            padding: 1.5rem;
+            background: #2a2a2a;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .text-section__title {
+            margin: 0 0 1rem;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .text-section__body {
+            margin: 0;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            opacity: 0.9;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="cards" class="cards sm-loading" data-sm-config='{"theme":"light","animation":"wave","opacity":"0.8"}'>
+        <div class="card">
+            <div class="card__image sm-item-primary">
+                <img src="https://picsum.photos/400/250?random=1" alt="Card 1">
+            </div>
+            <div class="card__body">
+                <h2 class="card__title sm-item-secondary">First card</h2>
+                <p class="card__subtitle sm-item-secondary">Short description for the first card.</p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card__image sm-item-primary">
+                <img src="https://picsum.photos/400/250?random=2" alt="Card 2">
+            </div>
+            <div class="card__body">
+                <h2 class="card__title sm-item-secondary">Second card</h2>
+                <p class="card__subtitle sm-item-secondary">Short description for the second card.</p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card__image sm-item-primary">
+                <img src="https://picsum.photos/400/250?random=3" alt="Card 3">
+            </div>
+            <div class="card__body">
+                <h2 class="card__title sm-item-secondary">Third card</h2>
+                <p class="card__subtitle sm-item-secondary">Short description for the third card.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="textSection" class="text-section sm-loading"
+        data-sm-config='{"theme":"light","animation":"pulse","opacity":"0.8"}'>
+        <h2 class="text-section__title sm-item-secondary">Article title</h2>
+        <p class="text-section__body sm-item-secondary">This is the main text section. It shows a skeleton on initial
+            load, then the real content appears after the simulated data fetch completes.</p>
+    </div>
+
+    <script>
+        (function () {
+            var cards = document.getElementById('cards');
+            var textSection = document.getElementById('textSection');
+            function hideSkeletons() {
+                cards.classList.remove('sm-loading');
+                textSection.classList.remove('sm-loading');
+            }
+            // Simulate load: show skeleton on load, reveal content after 2s
+            setTimeout(hideSkeletons, 2000);
+        })();
+    </script>
+</body>
+
+</html>

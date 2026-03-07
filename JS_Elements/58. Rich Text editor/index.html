@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tiptap Rich Text Editor</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+      background: linear-gradient(145deg, #1a1d24 0%, #252a33 100%);
+      color: #e4e6eb;
+      padding: 2rem;
+    }
+    .editor-wrapper {
+      max-width: 720px;
+      margin: 0 auto;
+      background: #2d323b;
+      border-radius: 12px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+      overflow: hidden;
+    }
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 2px;
+      padding: 8px 12px;
+      background: #252a33;
+      border-bottom: 1px solid #3d4450;
+    }
+    .toolbar-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 36px;
+      height: 36px;
+      padding: 0 10px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #b0b5bd;
+      background: transparent;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+    }
+    .toolbar-btn:hover {
+      background: #3d4450;
+      color: #e4e6eb;
+    }
+    .toolbar-btn.active {
+      background: #4a9eff;
+      color: #fff;
+    }
+    .toolbar-btn-clear {
+      color: #f87171;
+    }
+    .toolbar-btn-clear:hover {
+      background: rgba(248, 113, 113, 0.2);
+      color: #fca5a5;
+    }
+    .toolbar-btn .icon { font-weight: 700; font-style: normal; }
+    .toolbar-btn[data-action="bold"] .icon { font-weight: 700; }
+    .toolbar-btn[data-action="italic"] .icon { font-style: italic; font-weight: 600; }
+    .toolbar-btn[data-action="strike"] .icon { text-decoration: line-through; }
+    .toolbar-divider {
+      width: 1px;
+      height: 24px;
+      background: #3d4450;
+      margin: 0 4px;
+    }
+    .editor-container { min-height: 280px; }
+    .editor {
+      min-height: 280px;
+      padding: 20px 24px;
+      outline: none;
+    }
+    .tiptap { outline: none; }
+    .tiptap p { margin: 0.5em 0; line-height: 1.6; }
+    .tiptap p:first-child { margin-top: 0; }
+    .tiptap h1 { font-size: 1.75rem; font-weight: 700; margin: 1em 0 0.5em; line-height: 1.3; }
+    .tiptap h2 { font-size: 1.35rem; font-weight: 600; margin: 1em 0 0.5em; line-height: 1.4; }
+    .tiptap ul, .tiptap ol { padding-left: 1.5em; margin: 0.75em 0; }
+    .tiptap li { margin: 0.25em 0; line-height: 1.5; }
+    .tiptap blockquote {
+      border-left: 4px solid #4a9eff;
+      margin: 1em 0;
+      padding-left: 1em;
+      color: #9ca3af;
+      font-style: italic;
+    }
+    .tiptap code {
+      background: #3d4450;
+      padding: 0.2em 0.4em;
+      border-radius: 4px;
+      font-size: 0.9em;
+      font-family: "Consolas", "Monaco", monospace;
+    }
+    .tiptap pre {
+      background: #252a33;
+      border-radius: 8px;
+      padding: 1em;
+      margin: 1em 0;
+      overflow-x: auto;
+      border: 1px solid #3d4450;
+    }
+    .tiptap pre code { background: none; padding: 0; font-size: 0.875rem; color: #e4e6eb; }
+    .tiptap hr { border: none; border-top: 1px solid #3d4450; margin: 1.5em 0; }
+    .tiptap a {
+      color: #4a9eff;
+      text-decoration: none;
+    }
+    .tiptap a:hover { text-decoration: underline; }
+    .tiptap img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 6px;
+      display: block;
+      margin: 0.75em 0;
+    }
+    .tiptap iframe {
+      max-width: 100%;
+      border-radius: 8px;
+      margin: 0.75em 0;
+      border: 1px solid #3d4450;
+    }
+    .tiptap table {
+      border-collapse: collapse;
+      margin: 1em 0;
+      width: 100%;
+      overflow-x: auto;
+    }
+    .tiptap th,
+    .tiptap td {
+      border: 1px solid #3d4450;
+      padding: 8px 12px;
+      text-align: left;
+    }
+    .tiptap th {
+      background: #252a33;
+      font-weight: 600;
+    }
+    .tiptap td { background: #2d323b; }
+    .tiptap p.is-editor-empty:first-child::before {
+      content: attr(data-placeholder);
+      float: left;
+      color: #6b7280;
+      pointer-events: none;
+      height: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="editor-wrapper">
+    <div class="toolbar">
+      <button type="button" class="toolbar-btn" data-action="bold" title="Bold"><span class="icon">B</span></button>
+      <button type="button" class="toolbar-btn" data-action="italic" title="Italic"><span class="icon">I</span></button>
+      <button type="button" class="toolbar-btn" data-action="strike" title="Strikethrough"><span class="icon">S</span></button>
+      <span class="toolbar-divider"></span>
+      <button type="button" class="toolbar-btn" data-action="heading" data-level="1" title="Heading 1">H1</button>
+      <button type="button" class="toolbar-btn" data-action="heading" data-level="2" title="Heading 2">H2</button>
+      <button type="button" class="toolbar-btn" data-action="paragraph" title="Paragraph">P</button>
+      <span class="toolbar-divider"></span>
+      <button type="button" class="toolbar-btn" data-action="bulletList" title="Bullet list">• List</button>
+      <button type="button" class="toolbar-btn" data-action="orderedList" title="Numbered list">1. List</button>
+      <button type="button" class="toolbar-btn" data-action="blockquote" title="Quote">"</button>
+      <span class="toolbar-divider"></span>
+      <button type="button" class="toolbar-btn" data-action="code" title="Code">&lt;/&gt;</button>
+      <button type="button" class="toolbar-btn" data-action="codeBlock" title="Code block">{}</button>
+      <span class="toolbar-divider"></span>
+      <button type="button" class="toolbar-btn" data-action="link" title="Insert link">🔗</button>
+      <button type="button" class="toolbar-btn" data-action="image" title="Insert image">🖼</button>
+      <button type="button" class="toolbar-btn" data-action="video" title="Insert video (YouTube URL)">▶ Video</button>
+      <button type="button" class="toolbar-btn" data-action="table" title="Insert table">⊞</button>
+      <span class="toolbar-divider"></span>
+      <button type="button" class="toolbar-btn" data-action="undo" title="Undo">↶</button>
+      <button type="button" class="toolbar-btn" data-action="redo" title="Redo">↷</button>
+      <span class="toolbar-divider"></span>
+      <button type="button" class="toolbar-btn toolbar-btn-clear" data-action="clear" title="Clear all">Clear</button>
+    </div>
+    <div class="editor-container">
+      <div id="editor" class="editor"></div>
+    </div>
+  </div>
+  <input type="file" id="image-file-input" accept="image/*" hidden>
+
+  <script type="module">
+    import { Editor } from 'https://esm.sh/@tiptap/core'
+    import StarterKit from 'https://esm.sh/@tiptap/starter-kit'
+    import Link from 'https://esm.sh/@tiptap/extension-link'
+    import Image from 'https://esm.sh/@tiptap/extension-image'
+    import { TableKit } from 'https://esm.sh/@tiptap/extension-table'
+    import Youtube from 'https://esm.sh/@tiptap/extension-youtube'
+
+    const editorEl = document.getElementById('editor')
+    const toolbar = document.querySelector('.toolbar')
+
+    const editor = new Editor({
+      element: editorEl,
+      extensions: [
+        StarterKit,
+        Link.configure({ openOnClick: false }),
+        Image.configure({ allowBase64: true }),
+        Youtube.configure({ width: 640, height: 360 }),
+        TableKit,
+      ],
+      content: '<p>Start typing here… Use the toolbar for <strong>bold</strong>, <em>italic</em>, headings, lists, and more.</p>',
+      editorProps: {
+        attributes: { class: 'tiptap' },
+      },
+    })
+
+    function updateToolbarActiveState() {
+      toolbar.querySelectorAll('.toolbar-btn').forEach((btn) => {
+        const action = btn.dataset.action
+        const level = btn.dataset.level
+        let active = false
+        if (action === 'bold') active = editor.isActive('bold')
+        else if (action === 'italic') active = editor.isActive('italic')
+        else if (action === 'strike') active = editor.isActive('strike')
+        else if (action === 'heading' && level) active = editor.isActive('heading', { level: Number(level) })
+        else if (action === 'paragraph') active = editor.isActive('paragraph')
+        else if (action === 'bulletList') active = editor.isActive('bulletList')
+        else if (action === 'orderedList') active = editor.isActive('orderedList')
+        else if (action === 'blockquote') active = editor.isActive('blockquote')
+        else if (action === 'code') active = editor.isActive('code')
+        else if (action === 'codeBlock') active = editor.isActive('codeBlock')
+        else if (action === 'link') active = editor.isActive('link')
+        btn.classList.toggle('active', active)
+      })
+    }
+
+    toolbar.addEventListener('click', (e) => {
+      const btn = e.target.closest('.toolbar-btn')
+      if (!btn) return
+      const action = btn.dataset.action
+      const level = btn.dataset.level
+      if (action === 'bold') editor.chain().focus().toggleBold().run()
+      else if (action === 'italic') editor.chain().focus().toggleItalic().run()
+      else if (action === 'strike') editor.chain().focus().toggleStrike().run()
+      else if (action === 'heading' && level) editor.chain().focus().toggleHeading({ level: Number(level) }).run()
+      else if (action === 'paragraph') editor.chain().focus().setParagraph().run()
+      else if (action === 'bulletList') editor.chain().focus().toggleBulletList().run()
+      else if (action === 'orderedList') editor.chain().focus().toggleOrderedList().run()
+      else if (action === 'blockquote') editor.chain().focus().toggleBlockquote().run()
+      else if (action === 'code') editor.chain().focus().toggleCode().run()
+      else if (action === 'codeBlock') editor.chain().focus().toggleCodeBlock().run()
+      else if (action === 'link') {
+        const attrs = editor.getAttributes('link')
+        const href = attrs.href || ''
+        const url = prompt('Enter URL:', href)
+        if (url !== null) {
+          if (url === '') editor.chain().focus().unsetLink().run()
+          else editor.chain().focus().setLink({ href: url }).run()
+        }
+      } else if (action === 'image') {
+        document.getElementById('image-file-input').click()
+      } else if (action === 'video') {
+        const url = prompt('Enter video URL (YouTube):', 'https://www.youtube.com/watch?v=')
+        if (url && url.trim()) editor.chain().focus().setYoutubeVideo({ src: url.trim() }).run()
+      } else if (action === 'table') {
+        const rows = parseInt(prompt('Number of rows:', '3'), 10)
+        const cols = parseInt(prompt('Number of columns:', '3'), 10)
+        if (!isNaN(rows) && !isNaN(cols) && rows >= 1 && rows <= 20 && cols >= 1 && cols <= 10) {
+          editor.chain().focus().insertTable({ rows, cols, withHeaderRow: true }).run()
+        } else if (!isNaN(rows) && !isNaN(cols)) {
+          alert('Please enter rows (1–20) and columns (1–10).')
+        }
+      }
+      else if (action === 'undo') editor.chain().focus().undo().run()
+      else if (action === 'redo') editor.chain().focus().redo().run()
+      else if (action === 'clear') editor.chain().focus().clearContent().run()
+      updateToolbarActiveState()
+    })
+
+    document.getElementById('image-file-input').addEventListener('change', (e) => {
+      const file = e.target.files?.[0]
+      if (!file || !file.type.startsWith('image/')) return
+      const reader = new FileReader()
+      reader.onload = () => {
+        editor.chain().focus().insertContent({ type: 'image', attrs: { src: reader.result } }).run()
+      }
+      reader.readAsDataURL(file)
+      e.target.value = ''
+    })
+
+    editor.on('selectionUpdate', updateToolbarActiveState)
+    editor.on('transaction', updateToolbarActiveState)
+    updateToolbarActiveState()
+  </script>
+</body>
+</html>

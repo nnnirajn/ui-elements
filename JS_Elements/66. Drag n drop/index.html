@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sortable List – Drag and Drop</title>
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            max-width: 420px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        h1 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+        #sortable-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        #sortable-list li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            background: #fff;
+            border-bottom: 1px solid #eee;
+            user-select: none;
+        }
+        #sortable-list li:last-child { border-bottom: none; }
+        #sortable-list li:hover { background: #f8f8f8; }
+
+        .drag-handle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            color: #999;
+            cursor: grab;
+            flex-shrink: 0;
+        }
+        .drag-handle:hover { color: #555; }
+        .drag-handle:active { cursor: grabbing; }
+
+        .item-text {
+            flex: 1;
+            cursor: default;
+            user-select: text;
+        }
+
+        /* Placeholder while dragging */
+        .sortable-ghost {
+            opacity: 1;
+            background: #e8f4fd !important;
+            
+        }
+        .sortable-chosen {
+            background: #e8f4fd !important;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border: 1px solid #000000 !important;
+        }
+    </style>
+</head>
+<body>
+    <h1>Reorder the list</h1>
+    <ul id="sortable-list">
+        <li>
+            <span class="drag-handle" aria-label="Drag to reorder">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true">
+                    <circle cx="4" cy="3" r="1.2"/><circle cx="8" cy="3" r="1.2"/>
+                    <circle cx="4" cy="6" r="1.2"/><circle cx="8" cy="6" r="1.2"/>
+                    <circle cx="4" cy="9" r="1.2"/><circle cx="8" cy="9" r="1.2"/>
+                </svg>
+            </span>
+            <span class="item-text">Item 1</span>
+        </li>
+        <li>
+            <span class="drag-handle" aria-label="Drag to reorder">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true">
+                    <circle cx="4" cy="3" r="1.2"/><circle cx="8" cy="3" r="1.2"/>
+                    <circle cx="4" cy="6" r="1.2"/><circle cx="8" cy="6" r="1.2"/>
+                    <circle cx="4" cy="9" r="1.2"/><circle cx="8" cy="9" r="1.2"/>
+                </svg>
+            </span>
+            <span class="item-text">Item 2</span>
+        </li>
+        <li>
+            <span class="drag-handle" aria-label="Drag to reorder">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true">
+                    <circle cx="4" cy="3" r="1.2"/><circle cx="8" cy="3" r="1.2"/>
+                    <circle cx="4" cy="6" r="1.2"/><circle cx="8" cy="6" r="1.2"/>
+                    <circle cx="4" cy="9" r="1.2"/><circle cx="8" cy="9" r="1.2"/>
+                </svg>
+            </span>
+            <span class="item-text">Item 3</span>
+        </li>
+        <li>
+            <span class="drag-handle" aria-label="Drag to reorder">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true">
+                    <circle cx="4" cy="3" r="1.2"/><circle cx="8" cy="3" r="1.2"/>
+                    <circle cx="4" cy="6" r="1.2"/><circle cx="8" cy="6" r="1.2"/>
+                    <circle cx="4" cy="9" r="1.2"/><circle cx="8" cy="9" r="1.2"/>
+                </svg>
+            </span>
+            <span class="item-text">Item 4</span>
+        </li>
+        <li>
+            <span class="drag-handle" aria-label="Drag to reorder">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true">
+                    <circle cx="4" cy="3" r="1.2"/><circle cx="8" cy="3" r="1.2"/>
+                    <circle cx="4" cy="6" r="1.2"/><circle cx="8" cy="6" r="1.2"/>
+                    <circle cx="4" cy="9" r="1.2"/><circle cx="8" cy="9" r="1.2"/>
+                </svg>
+            </span>
+            <span class="item-text">Item 5</span>
+        </li>
+    </ul>
+
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+
+    <script>
+        var list = document.getElementById('sortable-list');
+        Sortable.create(list, {
+            handle: '.drag-handle',
+            animation: 150,
+            ghostClass: 'sortable-ghost',
+            chosenClass: 'sortable-chosen',
+            onEnd: function (evt) {
+                console.log('New order:', Array.from(list.children).map(function (el) {
+                    var t = el.querySelector('.item-text');
+                    return t ? t.textContent : el.textContent;
+                }));
+            }
+        });
+    </script>
+</body>
+</html>
+
+
+<!-- https://github.com/SortableJS/Sortable -->

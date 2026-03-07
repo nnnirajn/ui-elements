@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scrollspy</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .navigation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+        }
+
+        .menu {
+            display: flex;
+            justify-self: flex-end;
+            gap: 10px;
+            list-style-type: none;
+            padding: 10px 10px;
+
+            .menu__item {
+                text-decoration: none;
+                color: #000;
+            }
+        }
+
+        .menu__item a.active {
+            color: #ff7600;
+            font-weight: bolder;
+        }
+
+        .scrollspy {
+            height: 100vh;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="scrollspy" id="home">
+        <nav class="navigation">
+            <ul id="menu" class="menu">
+                <li class="menu__item">
+                    <a href="#home" class="active" data-scrollspy="#home">Home</a>
+                </li>
+                <li class="menu__item">
+                    <a href="#contact" data-scrollspy="#contact">Contact</a>
+                </li>
+                <li class="menu__item">
+                    <a href="#about" data-scrollspy="#about">About</a>
+                </li>
+            </ul>
+        </nav>
+
+        Home Setion
+    </section>
+    <section class="scrollspy" id="contact">
+        Contact Setion
+    </section>
+    <section class="scrollspy" id="about">
+        About Setion
+    </section>
+
+    <script src="./simple-scrollspy.js"></script>
+    <script>
+        window.onload = function () {
+            scrollSpy('#menu', {
+                offset: 100,
+                menuActiveTarget: '.menu__item > a',
+                sectionClass: '.scrollspy',
+                activeClass: 'active',
+                scrollContainer: '',
+                smoothScroll: true,
+            })
+        }
+    </script>
+</body>
+
+</html>

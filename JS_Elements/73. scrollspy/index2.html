@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scrollspy Horizaontal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .main-wrapper {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            border: 1px solid #000;
+            display: flex;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+        }
+
+        .navigation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+        }
+
+        .menu {
+            display: flex;
+            justify-self: flex-end;
+            gap: 10px;
+            list-style-type: none;
+
+            .menu__item {
+                text-decoration: none;
+                color: #000;
+            }
+        }
+
+        .menu__item a.active {
+            color: #ff7600;
+            font-weight: bolder;
+        }
+
+        .scrollspy {
+            height: 600px;
+            width: 100%;
+            border: 1px solid red;
+            flex-shrink: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main-wrapper">
+        <section class="scrollspy" id="home">
+            <nav class="navigation">
+                <ul id="menu" class="menu">
+                    <li class="menu__item">
+                        <a href="#home" class="active" data-scrollspy="#home">Home</a>
+                    </li>
+                    <li class="menu__item">
+                        <a href="#contact" data-scrollspy="#contact">Contact</a>
+                    </li>
+                    <li class="menu__item">
+                        <a href="#about" data-scrollspy="#about">About</a>
+                    </li>
+                </ul>
+            </nav>
+
+            Home Setion
+        </section>
+        <section class="scrollspy" id="contact">
+            Contact Setion
+        </section>
+        <section class="scrollspy" id="about">
+            About Setion
+        </section>
+    </div>
+    <script src="./simple-scrollspy.js"></script>
+    <script>
+        window.onload = function () {
+            scrollSpy('#menu', {
+                orientation: 'horizontal',
+                scrollContainer: '.main-wrapper',
+                offset: 0,
+                menuActiveTarget: '.menu__item > a',
+                sectionClass: '.scrollspy',
+                activeClass: 'active',
+                smoothScroll: true,
+            });
+        };
+    </script>
+</body>
+
+</html>

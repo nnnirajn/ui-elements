@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Type Writer Effect</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="type-wrap">
+        <span id="typed3"></span>
+    </div>
+
+    <script src="./typed.js"></script>
+
+    <script>
+        const typed3 = new Typed('#typed3', {
+            strings: ['Hello', 'World', 'This is a typewriter effect'],
+            typeSpeed: 100,
+            backSpeed: 100,
+            smartBackspace: true, // this is a default
+            loop: true,
+            // fadeOut: true,
+            // cursorChar: '_',
+        });
+    </script>
+</body>
+
+</html>
+
+<!-- https://www.cssscript.com/demo/highly-configurable-text-typing-library-typed-js/ -->
+
+<!-- https://github.com/mattboldt/typed.js -->

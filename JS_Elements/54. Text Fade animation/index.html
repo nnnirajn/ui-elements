@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Text Fade Animation</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: system-ui, -apple-system, sans-serif;
+      background: #0f0f0f;
+      color: #f5f5f5;
+    }
+
+    .stage {
+      height: 32px;
+      overflow: hidden;
+      position: relative;
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .line {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: clamp(1.25rem, 4vw, 1.75rem);
+      font-weight: 300;
+      letter-spacing: 0.02em;
+      opacity: 0;
+      transform: translateY(100%);
+      transition: none;
+    }
+
+    .line.active {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .line.exit {
+      opacity: 0;
+      transform: translateY(-80%);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+      pointer-events: none;
+    }
+
+    .line .words {
+      display: inline;
+    }
+
+    .line .word {
+      display: inline-block;
+      opacity: 0;
+      transform: translateY(0.4em);
+      animation: wordIn 0.4s ease forwards;
+    }
+
+    .line .word+.word {
+      margin-left: 0.35em;
+    }
+
+    @keyframes wordIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+
+</head>
+
+<body>
+  I am 
+  <div class="stage"></div>
+
+  <script>
+    (function () {
+      var lines = [
+        'Build something simple.',
+        'Ideas start with a single line.',
+        'Keep it clean and minimal.',
+        'Less is more.',
+        'Just enough to feel right.'
+      ];
+      var stage = document.querySelector('.stage');
+      var index = 0;
+
+      function createLine(text) {
+        var line = document.createElement('div');
+        line.className = 'line';
+        var wordsEl = document.createElement('span');
+        wordsEl.className = 'words';
+        var words = text.split(/\s+/);
+        for (var i = 0; i < words.length; i++) {
+          var span = document.createElement('span');
+          span.className = 'word';
+          span.textContent = words[i];
+          span.style.animationDelay = (i * 0.08) + 's';
+          wordsEl.appendChild(span);
+        }
+        line.appendChild(wordsEl);
+        return line;
+      }
+
+      function run() {
+        var current = stage.querySelector('.line.active');
+        var text = lines[index];
+        var next = createLine(text);
+        stage.appendChild(next);
+
+        requestAnimationFrame(function () {
+          requestAnimationFrame(function () {
+            next.classList.add('active');
+          });
+        });
+
+        if (current) {
+          current.classList.add('exit');
+          current.addEventListener('transitionend', function handler() {
+            current.removeEventListener('transitionend', handler);
+            current.remove();
+          });
+        }
+
+        index = (index + 1) % lines.length;
+        setTimeout(run, 3200);
+      }
+
+      run();
+    })();
+  </script>
+
+</body>

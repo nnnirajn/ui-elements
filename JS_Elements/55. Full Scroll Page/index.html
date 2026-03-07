@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="fullscroll.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .fullscroll1 {
+            background-color: red;
+        }
+
+        .fullscroll2 {
+            background-color: rgb(0, 255, 42);
+        }
+
+        .fullscroll3 {
+            background-color: rgb(25, 8, 255);
+        }
+
+        .fullscroll4 {
+            background-color: rgb(255, 0, 200);
+        }
+
+        /* Dot navigation - vertically centered on the right */
+        .fullscroll-dots {
+            position: fixed;
+            right: 24px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 100;
+        }
+        .fullscroll-dots .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            cursor: pointer;
+            transition: background 0.2s, transform 0.2s;
+        }
+        .fullscroll-dots .dot:hover {
+            background: rgba(255, 255, 255, 0.8);
+            transform: scale(1.2);
+        }
+        .fullscroll-dots .dot.active {
+            background: #fff;
+            transform: scale(1.3);
+        }
+    </style>
+    <title>Full Scroll Page</title>
+</head>
+<body>
+
+    <div class='fullscroll fullscroll1'>
+        <h1>Page 1</h1>
+        <span>This is page 1</span>
+    </div>
+    <div class='fullscroll fullscroll2'>
+        <h1>Page 2</h1>
+        <span>This is page 2. Lorem impsum samet.</span>
+    </div>
+    <div class='fullscroll fullscroll3'>
+        <h1>Page 3</h1>
+        <span>This is page 3. Lorem impsum samet.</span>
+    </div>
+
+    <div class='fullscroll fullscroll4'>
+        <h1>Page 4</h1>
+        <span>This is page 4. Lorem impsum samet.</span>
+    </div>
+
+    <!-- Dot navigation (filled by JS) -->
+    <div id="fullscroll-dots" class="fullscroll-dots"></div>
+
+    <script src="fullscroll.min.js"></script>
+
+    <!-- Mouse wheel support: scroll down = next page, scroll up = previous page -->
+    <script>
+        var dotsContainer = document.getElementById('fullscroll-dots');
+        var slides = document.querySelectorAll('.fullscroll');
+        var dots = [];
+
+        // Create dots first so onChange can update them
+        for (var i = 0; i < slides.length; i++) {
+            var dot = document.createElement('span');
+            dot.className = 'dot' + (i === 0 ? ' active' : '');
+            dot.setAttribute('data-index', i);
+            dotsContainer.appendChild(dot);
+            dots.push(dot);
+        }
+
+        var fullScroll = new FullScroll({
+            onChange: function (element, directionOrIndex) {
+                var current = this.current;
+                dots.forEach(function (d, i) {
+                    d.classList.toggle('active', i === current);
+                });
+            }
+        });
+
+        // Wire dot clicks (after fullScroll exists)
+        dots.forEach(function (dot, i) {
+            dot.addEventListener('click', function () {
+                fullScroll.goto(i);
+            });
+        });
+
+        // Mouse wheel support: scroll down = next page, scroll up = previous page
+        var wheelThrottle = 0;
+        var wheelDelay = 600; // ms between wheel-triggered page changes
+
+        document.addEventListener('wheel', function (e) {
+            e.preventDefault();
+            var now = Date.now();
+            if (now - wheelThrottle < wheelDelay) return;
+            wheelThrottle = now;
+
+            if (e.deltaY > 0) {
+                fullScroll.next();
+            } else if (e.deltaY < 0) {
+                fullScroll.previous();
+            }
+        }, { passive: false });
+    </script>
+</body>
+</html>
+
+

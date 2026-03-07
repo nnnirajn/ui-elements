@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tree View</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="tree">
+    <ul class="tree-root">
+      
+      <li class="tree-node">
+        <span class="tree-label">src</span>
+        <ul class="tree-children">
+          <li class="tree-node">
+            <span class="tree-label">components</span>
+            <ul class="tree-children">
+              <li class="tree-leaf"><span class="tree-label">Button.jsx</span></li>
+              <li class="tree-leaf"><span class="tree-label">Card.jsx</span></li>
+              <li class="tree-leaf"><span class="tree-label">TreeView.jsx</span></li>
+            </ul>
+          </li>
+          <li class="tree-node">
+            <span class="tree-label">hooks</span>
+            <ul class="tree-children">
+              <li class="tree-leaf"><span class="tree-label">useAuth.js</span></li>
+              <li class="tree-leaf"><span class="tree-label">useFetch.js</span></li>
+            </ul>
+          </li>
+          <li class="tree-leaf"><span class="tree-label">index.js</span></li>
+          <li class="tree-leaf"><span class="tree-label">App.jsx</span></li>
+        </ul>
+      </li>
+
+      <li class="tree-node">
+        <span class="tree-label">public</span>
+        <ul class="tree-children">
+          <li class="tree-leaf"><span class="tree-label">index.html</span></li>
+          <li class="tree-leaf"><span class="tree-label">favicon.ico</span></li>
+        </ul>
+      </li>
+
+      <li class="tree-node">
+        <span class="tree-label">styles</span>
+        <ul class="tree-children">
+          <li class="tree-leaf"><span class="tree-label">main.css</span></li>
+          <li class="tree-leaf"><span class="tree-label">variables.css</span></li>
+        </ul>
+      </li>
+
+      <li class="tree-leaf"><span class="tree-label">package.json</span></li>
+
+      <li class="tree-leaf"><span class="tree-label">README.md</span></li>
+      
+    </ul>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
