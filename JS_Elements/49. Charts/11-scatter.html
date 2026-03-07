@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scatter Chart - Correlation</title>
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', system-ui, sans-serif; background: #f8fafc; padding: 2rem; min-height: 100vh; }
+    .container { max-width: 800px; margin: 0 auto; }
+    h1 { font-size: 1.25rem; font-weight: 600; color: #334155; margin-bottom: 1.5rem; }
+    #chart { background: #fff; border-radius: 8px; padding: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Ad Spend vs Revenue (by Campaign)</h1>
+    <div id="chart"></div>
+  </div>
+  <script>
+    const options = {
+      series: [{
+        name: 'Campaign A',
+        data: [[400, 1200], [600, 1800], [800, 2200], [500, 1500], [700, 2000], [900, 2600], [550, 1600], [750, 2100]]
+      }, {
+        name: 'Campaign B',
+        data: [[300, 900], [450, 1300], [650, 1900], [350, 1000], [500, 1400], [600, 1700], [400, 1150], [550, 1550]]
+      }],
+      chart: { type: 'scatter', height: 320, zoom: { enabled: true } },
+      xaxis: {
+        title: { text: 'Ad Spend ($)', style: { color: '#64748b' } },
+        labels: { style: { colors: '#64748b' }, formatter: (v) => '$' + v }
+      },
+      yaxis: {
+        title: { text: 'Revenue ($)', style: { color: '#64748b' } },
+        labels: { style: { colors: '#64748b' }, formatter: (v) => '$' + v }
+      },
+      colors: ['#3b82f6', '#f59e0b'],
+      grid: { borderColor: '#e2e8f0', strokeDashArray: 4 },
+      legend: { position: 'top' },
+      tooltip: {
+        theme: 'light',
+        x: { formatter: (v) => 'Spend: $' + v },
+        y: { formatter: (v) => 'Revenue: $' + v }
+      }
+    };
+    const chart = new ApexCharts(document.querySelector('#chart'), options);
+    chart.render();
+  </script>
+</body>
+</html>

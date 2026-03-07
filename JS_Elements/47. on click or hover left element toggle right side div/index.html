@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: beige;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .tabs-main {
+            border: 1px solid #ccc;
+            max-width: 600px;
+            padding: 15px;
+        }
+
+        .tabs-main .tab-header {
+            padding-bottom: 10px;
+        }
+
+        .tabs-main ul {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            column-gap: 6px;
+        }
+
+        .tabs-main ul li {
+            display: block;
+            background-color: blueviolet;
+            padding: 6px 8px;
+            color: #fff;
+        }
+
+        .tabs-main ul li:hover {
+            background-color: red;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .tabs-main ul li.active {
+            background-color: red;
+            color: #fff;
+        }
+
+        .tabs-main .tab-inner {
+            max-height: 0;
+            overflow: hidden;
+            transition: opacity 1s, transform 1s;
+            opacity: 0;
+            transform: translateX(20px);
+        }
+
+        .tabs-main .tab-inner p {
+            padding: 15px;
+        }
+
+        .tabs-main .tab-inner.active {
+            max-height: 300px;
+            overflow: auto;
+            opacity: 1;
+            padding: 0;
+            background-color: red;
+            transform: translateX(0px);
+        }
+    </style>
+    <title>Tabs</title>
+</head>
+
+<body>
+
+    <section class="tabs-main">
+        <div class="tab-header">
+            <ul>
+                <li class="active" data-tab="Tfirst">Tab 1</li>
+                <li data-tab="Tsecond">Tab 2</li>
+                <li data-tab="Tthird">Tab 3</li>
+                <li data-tab="Tfourth">Tab 4</li>
+                <li data-tab="Tfifth">Tab 5</li>
+            </ul>
+        </div>
+        <div class="tab-content">
+            <div class="tab-inner active" id="Tfirst">
+                <p>
+                    1. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde nihil itaque corporis, omnis quod
+                    aut dolores numquam architecto, modi adipisci sequi! Modi delectus provident quisquam laboriosam
+                    sunt fugiat aut! Modi!
+                </p>
+
+            </div>
+            <div class="tab-inner" id="Tsecond">
+                <p>
+                    2. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde nihil itaque corporis, omnis quod
+                    aut dolores numquam architecto, modi adipisci sequi! Modi delectus provident quisquam laboriosam
+                    sunt fugiat aut! Modi!
+                </p>
+
+            </div>
+            <div class="tab-inner" id="Tthird">
+                <p>
+                    3. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde nihil itaque corporis, omnis quod
+                    aut dolores numquam architecto, modi adipisci sequi! Modi delectus provident quisquam laboriosam
+                    sunt fugiat aut! Modi!
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde nihil itaque corporis, omnis quod aut
+                    dolores numquam architecto, modi adipisci sequi! Modi delectus provident quisquam laboriosam sunt
+                    fugiat aut! Modi!
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde nihil itaque corporis, omnis quod aut
+                    dolores numquam architecto, modi adipisci sequi! Modi delectus provident quisquam laboriosam sunt
+                    fugiat aut! Modi!
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde nihil itaque corporis, omnis quod aut
+                    dolores numquam architecto, modi adipisci sequi! Modi delectus provident quisquam laboriosam sunt
+                    fugiat aut! Modi!
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde nihil itaque corporis, omnis quod aut
+                    dolores numquam architecto, modi adipisci sequi! Modi delectus provident quisquam laboriosam sunt
+                    fugiat aut! Modi!
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde nihil itaque corporis, omnis quod aut
+                    dolores numquam architecto, modi adipisci sequi! Modi delectus provident quisquam laboriosam sunt
+                    fugiat aut! Modi!
+                </p>
+
+            </div>
+            <div class="tab-inner" id="Tfourth">
+                <p>
+                    4. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde nihil itaque corporis, omnis quod
+                    aut dolores numquam architecto, modi adipisci sequi! Modi delectus provident quisquam laboriosam
+                    sunt fugiat aut! Modi!
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde nihil itaque corporis, omnis quod aut
+                    dolores numquam architecto, modi adipisci sequi! Modi delectus provident quisquam laboriosam sunt
+                    fugiat aut! Modi!
+                </p>
+            </div>
+            <div class="tab-inner" id="Tfifth">
+                <p>
+                    5. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde nihil itaque corporis, omnis quod
+                    aut dolores numquam architecto, modi adipisci sequi! Modi delectus provident quisquam laboriosam
+                    sunt fugiat aut! Modi!
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <script type="module">
+        const tabMain = document.querySelector('.tabs-main');
+        const tabHeaderList = document.querySelectorAll('.tabs-main .tab-header ul li');
+        const tabContentList = document.querySelectorAll('.tabs-main .tab-content .tab-inner');
+
+        // console.log(tabMain);
+        // console.log(tabHeaderList);
+        // console.log(tabContentList);
+
+        tabMain.addEventListener("click", (event) => {
+            // console.log(event.target.dataset.tab);
+
+            let getCurrentHeadingTab = event.target.dataset.tab; // get value of dataset tab using event target
+
+            if (getCurrentHeadingTab) {
+                // console.log(event.target);
+                tabHeaderList.forEach(headerList => {
+                    headerList.classList.remove('active');
+                });
+                event.target.classList.add('active');
+
+                // below code is for tab content
+                tabContentList.forEach((contentList) => {
+                    contentList.classList.remove('active');
+                });
+
+                let getCurrentContentTab = document.querySelector(`#${getCurrentHeadingTab}`);
+                // console.log(getCurrentHeadingTab);
+                getCurrentContentTab.classList.add('active');
+            }
+        });
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Treemap - Hierarchical Data</title>
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', system-ui, sans-serif; background: #f8fafc; padding: 2rem; min-height: 100vh; }
+    .container { max-width: 700px; margin: 0 auto; }
+    h1 { font-size: 1.25rem; font-weight: 600; color: #334155; margin-bottom: 1.5rem; }
+    #chart { background: #fff; border-radius: 8px; padding: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Revenue by Department & Team</h1>
+    <div id="chart"></div>
+  </div>
+  <script>
+    const options = {
+      series: [{
+        data: [
+          { x: 'Engineering', y: 420 },
+          { x: 'Frontend', y: 180 },
+          { x: 'Backend', y: 150 },
+          { x: 'DevOps', y: 90 },
+          { x: 'Marketing', y: 280 },
+          { x: 'Digital', y: 160 },
+          { x: 'Brand', y: 120 },
+          { x: 'Sales', y: 350 },
+          { x: 'Enterprise', y: 220 },
+          { x: 'SMB', y: 130 },
+          { x: 'Support', y: 95 },
+          { x: 'Operations', y: 75 }
+        ]
+      }],
+      chart: { type: 'treemap', height: 360, toolbar: { show: false } },
+      colors: ['#3b82f6', '#10b981', '#f59e0b', '#8b5cf6', '#ec4899', '#06b6d4'],
+      plotOptions: {
+        treemap: {
+          distributed: true,
+          enableShades: true,
+          shadeIntensity: 0.4
+        }
+      },
+      dataLabels: {
+        enabled: true,
+        formatter: (text, op) => [text, op.value + 'k']
+      },
+      legend: { show: false },
+      tooltip: {
+        theme: 'light',
+        y: { formatter: (v) => '$' + v + 'k revenue' }
+      }
+    };
+    const chart = new ApexCharts(document.querySelector('#chart'), options);
+    chart.render();
+  </script>
+</body>
+</html>

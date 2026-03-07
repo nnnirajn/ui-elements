@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leaflet Demo 2 - Custom Markers & Popups</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', sans-serif; padding: 1rem; background: #1a1a2e; color: #eee; }
+    h1 { margin-bottom: 0.5rem; font-size: 1.25rem; color: #00d9ff; }
+    p { margin-bottom: 1rem; font-size: 0.9rem; opacity: 0.9; }
+    #map { height: 500px; border-radius: 12px; border: 2px solid #333; }
+    .custom-marker { background: #00d9ff; border: 3px solid #fff; border-radius: 50%; box-shadow: 0 2px 10px rgba(0,0,0,0.3); }
+  </style>
+</head>
+<body>
+  <h1>Demo 2: Custom Markers & Popups</h1>
+  <p>Custom marker icons (divIcon), different colors, and popups with HTML content.</p>
+  <div id="map"></div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+    const map = L.map('map').setView([40.7128, -74.0060], 12);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap'
+    }).addTo(map);
+
+    const redIcon = L.divIcon({
+      className: 'custom-marker',
+      html: '<div style="width:24px;height:24px;background:#e74c3c;border:3px solid #fff;border-radius:50%;box-shadow:0 2px 10px rgba(0,0,0,0.3);"></div>',
+      iconSize: [30, 30],
+      iconAnchor: [15, 15]
+    });
+
+    const greenIcon = L.divIcon({
+      className: 'custom-marker',
+      html: '<div style="width:24px;height:24px;background:#2ecc71;border:3px solid #fff;border-radius:50%;box-shadow:0 2px 10px rgba(0,0,0,0.3);"></div>',
+      iconSize: [30, 30],
+      iconAnchor: [15, 15]
+    });
+
+    L.marker([40.7589, -73.9851], { icon: redIcon })
+      .bindPopup('<b>Times Square</b><br>Manhattan, NY')
+      .addTo(map);
+
+    L.marker([40.6892, -74.0445], { icon: greenIcon })
+      .bindPopup('<b>Statue of Liberty</b><br>Liberty Island')
+      .addTo(map);
+
+    L.marker([40.7484, -73.9857], { icon: redIcon })
+      .bindPopup('<b>Empire State Building</b><br>350 5th Ave')
+      .addTo(map);
+  </script>
+</body>
+</html>

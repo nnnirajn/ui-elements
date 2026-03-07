@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leaflet Demo 10 - Combined Features</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', sans-serif; padding: 1rem; background: #1a1a2e; color: #eee; }
+    h1 { margin-bottom: 0.5rem; font-size: 1.25rem; color: #00d9ff; }
+    p { margin-bottom: 1rem; font-size: 0.9rem; opacity: 0.9; }
+    #map { height: 500px; border-radius: 12px; border: 2px solid #333; }
+    .legend { padding: 10px 14px; background: #16213e; border-radius: 8px; border: 1px solid #333; }
+    .legend span { display: inline-block; width: 14px; height: 14px; margin-right: 8px; vertical-align: middle; border-radius: 2px; }
+    .legend div { margin: 4px 0; font-size: 12px; }
+  </style>
+</head>
+<body>
+  <h1>Demo 10: Combined Features</h1>
+  <p>Multiple layers, custom markers, shapes, layer control, and a legend—all in one map.</p>
+  <div id="map"></div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+    const map = L.map('map').setView([40.7128, -74.0060], 12);
+
+    const osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap'
+    }).addTo(map);
+
+    const dark = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+      attribution: '&copy; CARTO'
+    });
+
+    const markersLayer = L.layerGroup();
+    const shapesLayer = L.layerGroup();
+    const routeLayer = L.layerGroup();
+
+    const route = [[40.7589, -73.9851], [40.7484, -73.9857], [40.7128, -74.0060]];
+    L.polyline(route, { color: '#e74c3c', weight: 4 }).addTo(routeLayer);
+
+    L.circle([40.7128, -74.0060], { color: '#00d9ff', fillColor: '#00d9ff', fillOpacity: 0.2, radius: 1200 }).addTo(shapesLayer);
+    L.rectangle([[40.72, -74.02], [40.70, -73.99]], { color: '#2ecc71', fillColor: '#2ecc71', fillOpacity: 0.15 }).addTo(shapesLayer);
+
+    const icon = L.divIcon({
+      className: '',
+      html: '<div style="width:20px;height:20px;background:#00d9ff;border:2px solid #fff;border-radius:50%;"></div>',
+      iconSize: [24, 24],
+      iconAnchor: [12, 12]
+    });
+
+    [[40.7589, -73.9851], [40.6892, -74.0445], [40.7484, -73.9857]].forEach((ll, i) => {
+      L.marker(ll, { icon }).addTo(markersLayer).bindPopup('Location ' + (i + 1));
+    });
+
+    markersLayer.addTo(map);
+    shapesLayer.addTo(map);
+    routeLayer.addTo(map);
+
+    L.control.layers(
+      { 'OSM': osm, 'Dark': dark },
+      { 'Markers': markersLayer, 'Shapes': shapesLayer, 'Route': routeLayer },
+      { collapsed: false }
+    ).addTo(map);
+
+    const legend = L.control({ position: 'bottomright' });
+    legend.onAdd = function() {
+      const div = L.DomUtil.create('div', 'legend');
+      div.innerHTML = '<div><span style="background:#00d9ff;"></span> Markers / Circle</div>' +
+        '<div><span style="background:#2ecc71;"></span> Rectangle</div>' +
+        '<div><span style="background:#e74c3c;"></span> Route</div>';
+      return div;
+    };
+    legend.addTo(map);
+  </script>
+</body>
+</html>

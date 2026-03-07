@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: beige;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .tabs-main {
+            border: 1px solid #ccc;
+            max-width: 600px;
+            padding: 15px;
+        }
+
+        .tabs-main .tab-header {
+            padding-bottom: 10px;
+        }
+
+        .tabs-main ul {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            column-gap: 6px;
+        }
+
+        .tabs-main ul li {
+            display: block;
+            background-color: blueviolet;
+            padding: 6px 8px;
+            color: #fff;
+        }
+
+        .tabs-main ul li:hover {
+            background-color: red;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .tabs-main ul li.active {
+            background-color: red;
+            color: #fff;
+        }
+
+        .tabs-main .tab-inner {
+            max-height: 0;
+            overflow: hidden;
+            transition: opacity 1s, transform 1s;
+            opacity: 0;
+            transform: translateX(20px);
+        }
+
+        .tabs-main .tab-inner p {
+            padding: 15px;
+        }
+
+        .tabs-main .tab-inner.active {
+            max-height: 300px;
+            overflow: auto;
+            opacity: 1;
+            padding: 0;
+            background-color: red;
+            transform: translateX(0px);
+        }
+    </style>
+    <title>Tabs (Hover)</title>
+</head>
+
+<body>
+
+    <section class="tabs-main">
+        <div class="tab-header">
+            <ul>
+                <li class="active" data-tab="Tfirst">Tab 1</li>
+                <li data-tab="Tsecond">Tab 2</li>
+                <li data-tab="Tthird">Tab 3</li>
+                <li data-tab="Tfourth">Tab 4</li>
+                <li data-tab="Tfifth">Tab 5</li>
+            </ul>
+        </div>
+        <div class="tab-content">
+            <div class="tab-inner active" id="Tfirst">
+                <p>
+                    1. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde nihil itaque corporis, omnis quod
+                    aut dolores numquam architecto, modi adipisci sequi! Modi delectus provident quisquam laboriosam
+                    sunt fugiat aut! Modi!
+                </p>
+
+            </div>
+            <div class="tab-inner" id="Tsecond">
+                <p>
+                    2. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde nihil itaque corporis, omnis quod
+                    aut dolores numquam architecto, modi adipisci sequi! Modi delectus provident quisquam laboriosam
+                    sunt fugiat aut! Modi!
+                </p>
+
+            </div>
+            <div class="tab-inner" id="Tthird">
+                <p>
+                    2. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde nihil itaque corporis, omnis quod
+                    aut dolores numquam architecto, modi adipisci sequi! Modi delectus provident quisquam laboriosam
+                    sunt fugiat aut! Modi!
+                </p>
+
+            </div>
+            <div class="tab-inner" id="Tfourth">
+                <p>
+                    2. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde nihil itaque corporis, omnis quod
+                    aut dolores numquam architecto, modi adipisci sequi! Modi delectus provident quisquam laboriosam
+                    sunt fugiat aut! Modi!
+                </p>
+            </div>
+            <div class="tab-inner" id="Tfifth">
+                <p>
+                2. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde nihil itaque corporis, omnis quod
+                aut dolores numquam architecto, modi adipisci sequi! Modi delectus provident quisquam laboriosam
+                sunt fugiat aut! Modi!
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <script type="module">
+        const tabMain = document.querySelector('.tabs-main');
+        const tabHeaderList = document.querySelectorAll('.tabs-main .tab-header ul li');
+        const tabContentList = document.querySelectorAll('.tabs-main .tab-content .tab-inner');
+
+        let hoverTimeout = null;
+
+        function showTab(tabId) {
+            tabHeaderList.forEach(headerList => {
+                headerList.classList.remove('active');
+                if (headerList.dataset.tab === tabId) {
+                    headerList.classList.add('active');
+                }
+            });
+            tabContentList.forEach((contentList) => {
+                contentList.classList.remove('active');
+                if (contentList.id === tabId) {
+                    contentList.classList.add('active');
+                }
+            });
+        }
+
+        tabHeaderList.forEach((li) => {
+            li.addEventListener('mouseenter', () => {
+                const tabId = li.dataset.tab;
+                if (!tabId) return;
+                if (hoverTimeout) clearTimeout(hoverTimeout);
+                hoverTimeout = setTimeout(() => showTab(tabId), 50);
+            });
+            li.addEventListener('mouseleave', () => {
+                if (hoverTimeout) {
+                    clearTimeout(hoverTimeout);
+                    hoverTimeout = null;
+                }
+            });
+        });
+
+        // Only revert to first tab when mouse leaves the entire section (not when moving into content)
+        tabMain.addEventListener('mouseleave', () => {
+            showTab('Tfirst');
+        });
+    </script>
+</body>
+
+</html>

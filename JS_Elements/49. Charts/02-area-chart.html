@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Area Chart - Website Traffic</title>
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', system-ui, sans-serif; background: #f8fafc; padding: 2rem; min-height: 100vh; }
+    .container { max-width: 800px; margin: 0 auto; }
+    h1 { font-size: 1.25rem; font-weight: 600; color: #334155; margin-bottom: 1.5rem; }
+    #chart { background: #fff; border-radius: 8px; padding: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Website Visitors (Last 7 Days)</h1>
+    <div id="chart"></div>
+  </div>
+  <script>
+    const options = {
+      series: [{
+        name: 'Visitors',
+        data: [4400, 5200, 4800, 6100, 5500, 7200, 6800]
+      }],
+      chart: { type: 'area', height: 320, toolbar: { show: false } },
+      fill: { type: 'gradient', gradient: { shadeIntensity: 1, opacityFrom: 0.4, opacityTo: 0.1 } },
+      stroke: { curve: 'smooth', width: 2 },
+      xaxis: {
+        categories: ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
+        labels: { style: { colors: '#64748b', fontSize: '12px' } }
+      },
+      yaxis: { labels: { style: { colors: '#64748b' } } },
+      colors: ['#10b981'],
+      grid: { borderColor: '#e2e8f0', strokeDashArray: 4 },
+      tooltip: { theme: 'light' }
+    };
+    const chart = new ApexCharts(document.querySelector('#chart'), options);
+    chart.render();
+  </script>
+</body>
+</html>

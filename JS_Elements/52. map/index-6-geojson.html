@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leaflet Demo 6 - GeoJSON Overlay</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', sans-serif; padding: 1rem; background: #1a1a2e; color: #eee; }
+    h1 { margin-bottom: 0.5rem; font-size: 1.25rem; color: #00d9ff; }
+    p { margin-bottom: 1rem; font-size: 0.9rem; opacity: 0.9; }
+    #map { height: 500px; border-radius: 12px; border: 2px solid #333; }
+  </style>
+</head>
+<body>
+  <h1>Demo 6: GeoJSON Overlay</h1>
+  <p>Load and style GeoJSON data (points, lines, polygons) with custom options and onEachFeature popups.</p>
+  <div id="map"></div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+    const map = L.map('map').setView([40.7128, -74.0060], 13);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap'
+    }).addTo(map);
+
+    const geojsonFeature = {
+      type: 'Feature',
+      properties: { name: 'Central Park Area', type: 'Park' },
+      geometry: {
+        type: 'Polygon',
+        coordinates: [[
+          [-73.981, 40.768], [-73.958, 40.768], [-73.958, 40.798],
+          [-73.981, 40.798], [-73.981, 40.768]
+        ]]
+      }
+    };
+
+    const pointFeature = {
+      type: 'Feature',
+      properties: { name: 'Sample Point', value: 42 },
+      geometry: { type: 'Point', coordinates: [-74.0060, 40.7128] }
+    };
+
+    function style(feature) {
+      return {
+        fillColor: '#2ecc71',
+        weight: 2,
+        opacity: 1,
+        color: '#27ae60',
+        fillOpacity: 0.4
+      };
+    }
+
+    function onEachFeature(feature, layer) {
+      if (feature.properties) {
+        layer.bindPopup('<b>' + (feature.properties.name || 'Feature') + '</b><br>' +
+          (feature.properties.type || feature.properties.value || ''));
+      }
+    }
+
+    L.geoJSON(geojsonFeature, {
+      style: style,
+      onEachFeature: onEachFeature
+    }).addTo(map);
+
+    L.geoJSON(pointFeature, {
+      pointToLayer: (feature, latlng) => L.circleMarker(latlng, {
+        radius: 10,
+        fillColor: '#e74c3c',
+        color: '#fff',
+        weight: 2
+      }),
+      onEachFeature: onEachFeature
+    }).addTo(map);
+  </script>
+</body>
+</html>

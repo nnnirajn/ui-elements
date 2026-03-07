@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pie Chart - Budget Allocation</title>
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', system-ui, sans-serif; background: #f8fafc; padding: 2rem; min-height: 100vh; }
+    .container { max-width: 480px; margin: 0 auto; }
+    h1 { font-size: 1.25rem; font-weight: 600; color: #334155; margin-bottom: 1.5rem; }
+    #chart { background: #fff; border-radius: 8px; padding: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Annual Budget by Department</h1>
+    <div id="chart"></div>
+  </div>
+  <script>
+    const options = {
+      series: [42, 28, 18, 12],
+      chart: { type: 'pie', height: 320 },
+      labels: ['Engineering', 'Marketing', 'Operations', 'Admin'],
+      colors: ['#0ea5e9', '#ec4899', '#14b8a6', '#f97316'],
+      stroke: { width: 2, colors: '#fff' },
+      legend: { position: 'bottom' },
+      dataLabels: { enabled: true, formatter: (v) => v + '%' }
+    };
+    const chart = new ApexCharts(document.querySelector('#chart'), options);
+    chart.render();
+  </script>
+</body>
+</html>

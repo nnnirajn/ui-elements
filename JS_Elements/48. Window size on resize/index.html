@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Window Size</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: system-ui, sans-serif;
+      background: #1a1a2e;
+      color: #eee;
+    }
+    .size-display {
+      padding: 1.5rem 2rem;
+      background: #16213e;
+      border-radius: 12px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+      font-size: 1.25rem;
+      text-align: center;
+      min-width: 280px;
+    }
+    .size-display span {
+      color: #e94560;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <div class="size-display" id="sizeDisplay">
+    Width: <span id="width">0</span>px &nbsp; Height: <span id="height">0</span>px
+  </div>
+
+  <script>
+    var widthEl = document.getElementById('width');
+    var heightEl = document.getElementById('height');
+    var sizeDisplay = document.getElementById('sizeDisplay');
+
+    function updateSize() {
+      var w = window.innerWidth;
+      var h = window.innerHeight;
+      widthEl.textContent = w;
+      heightEl.textContent = h;
+    }
+
+    updateSize();
+    window.addEventListener('resize', updateSize);
+  </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leaflet Demo 1 - Basic Map</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', sans-serif; padding: 1rem; background: #1a1a2e; color: #eee; }
+    h1 { margin-bottom: 0.5rem; font-size: 1.25rem; color: #00d9ff; }
+    p { margin-bottom: 1rem; font-size: 0.9rem; opacity: 0.9; }
+    #map { height: 500px; border-radius: 12px; border: 2px solid #333; }
+  </style>
+</head>
+<body>
+  <h1>Demo 1: Basic Map</h1>
+  <p>Simple Leaflet map with default OpenStreetMap tiles, zoom controls, and attribution.</p>
+  <div id="map"></div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+    const map = L.map('map').setView([40.7128, -74.0060], 13);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(map);
+  </script>
+</body>
+</html>

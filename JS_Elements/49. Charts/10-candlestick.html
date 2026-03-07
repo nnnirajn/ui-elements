@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Candlestick - Stock Price</title>
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', system-ui, sans-serif; background: #f8fafc; padding: 2rem; min-height: 100vh; }
+    .container { max-width: 800px; margin: 0 auto; }
+    h1 { font-size: 1.25rem; font-weight: 600; color: #334155; margin-bottom: 1.5rem; }
+    #chart { background: #fff; border-radius: 8px; padding: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Stock OHLC (Last 10 Days)</h1>
+    <div id="chart"></div>
+  </div>
+  <script>
+    const options = {
+      series: [{
+        name: 'Price',
+        data: [
+          { x: 'Day 1', y: [100, 108, 98, 105] },
+          { x: 'Day 2', y: [105, 112, 103, 110] },
+          { x: 'Day 3', y: [110, 115, 108, 112] },
+          { x: 'Day 4', y: [112, 118, 110, 115] },
+          { x: 'Day 5', y: [115, 120, 113, 118] },
+          { x: 'Day 6', y: [118, 122, 116, 120] },
+          { x: 'Day 7', y: [120, 125, 118, 122] },
+          { x: 'Day 8', y: [122, 118, 115, 119] },
+          { x: 'Day 9', y: [119, 124, 117, 123] },
+          { x: 'Day 10', y: [123, 128, 121, 126] }
+        ]
+      }],
+      chart: { type: 'candlestick', height: 320, toolbar: { show: false } },
+      xaxis: { labels: { style: { colors: '#64748b' } } },
+      yaxis: {
+        labels: { style: { colors: '#64748b' }, formatter: (v) => '$' + v }
+      },
+      plotOptions: {
+        candlestick: {
+          colors: { upward: '#10b981', downward: '#ef4444' }
+        }
+      },
+      grid: { borderColor: '#e2e8f0', strokeDashArray: 4 },
+      tooltip: { theme: 'light' }
+    };
+    const chart = new ApexCharts(document.querySelector('#chart'), options);
+    chart.render();
+  </script>
+</body>
+</html>

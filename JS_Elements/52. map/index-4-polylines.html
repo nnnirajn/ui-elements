@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leaflet Demo 4 - Polylines & Routes</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', sans-serif; padding: 1rem; background: #1a1a2e; color: #eee; }
+    h1 { margin-bottom: 0.5rem; font-size: 1.25rem; color: #00d9ff; }
+    p { margin-bottom: 1rem; font-size: 0.9rem; opacity: 0.9; }
+    #map { height: 500px; border-radius: 12px; border: 2px solid #333; }
+  </style>
+</head>
+<body>
+  <h1>Demo 4: Polylines & Routes</h1>
+  <p>Draw lines and routes with custom dash patterns, arrows (via polyline decorator pattern), and styling.</p>
+  <div id="map"></div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+    const map = L.map('map').setView([40.7128, -74.0060], 12);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap'
+    }).addTo(map);
+
+    const route1 = [
+      [40.7589, -73.9851],
+      [40.7484, -73.9857],
+      [40.7128, -74.0060],
+      [40.6892, -74.0445]
+    ];
+
+    L.polyline(route1, {
+      color: '#e74c3c',
+      weight: 5,
+      opacity: 0.8,
+      dashArray: '10, 10'
+    }).bindPopup('Route: Times Square → Empire State → Downtown → Liberty').addTo(map);
+
+    const route2 = [
+      [40.72, -74.01],
+      [40.73, -73.98],
+      [40.74, -73.97]
+    ];
+
+    L.polyline(route2, {
+      color: '#2ecc71',
+      weight: 4,
+      opacity: 1
+    }).bindPopup('Secondary route').addTo(map);
+
+    route1.forEach((latlng, i) => {
+      L.circleMarker(latlng, { radius: 6, fillColor: '#e74c3c', color: '#fff', weight: 2 })
+        .bindPopup('Point ' + (i + 1)).addTo(map);
+    });
+  </script>
+</body>
+</html>

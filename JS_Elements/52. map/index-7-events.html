@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leaflet Demo 7 - Map Events</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', sans-serif; padding: 1rem; background: #1a1a2e; color: #eee; }
+    h1 { margin-bottom: 0.5rem; font-size: 1.25rem; color: #00d9ff; }
+    p { margin-bottom: 0.5rem; font-size: 0.9rem; opacity: 0.9; }
+    #map { height: 450px; border-radius: 12px; border: 2px solid #333; margin-bottom: 1rem; }
+    #info { background: #16213e; padding: 1rem; border-radius: 8px; font-size: 0.9rem; min-height: 60px; }
+    #info strong { color: #00d9ff; }
+  </style>
+</head>
+<body>
+  <h1>Demo 7: Map Events (Click, Hover, Move)</h1>
+  <p>Click on the map to add a marker. Hover and move the map to see event data below.</p>
+  <div id="map"></div>
+  <div id="info">Click the map or move/zoom to see events.</div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+    const map = L.map('map').setView([40.7128, -74.0060], 13);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap'
+    }).addTo(map);
+
+    const markers = L.layerGroup().addTo(map);
+
+    function updateInfo(str) {
+      document.getElementById('info').innerHTML = str;
+    }
+
+    map.on('click', (e) => {
+      const { lat, lng } = e.latlng;
+      L.marker([lat, lng]).addTo(markers).bindPopup(`Lat: ${lat.toFixed(4)}, Lng: ${lng.toFixed(4)}`);
+      updateInfo('<strong>Clicked</strong> at ' + lat.toFixed(4) + ', ' + lng.toFixed(4));
+    });
+
+    map.on('mousemove', (e) => {
+      const { lat, lng } = e.latlng;
+      updateInfo('<strong>Mouse</strong> ' + lat.toFixed(4) + ', ' + lng.toFixed(4) + ' &nbsp;|&nbsp; <strong>Zoom</strong> ' + map.getZoom());
+    });
+
+    map.on('moveend', () => {
+      const c = map.getCenter();
+      updateInfo('<strong>Map moved</strong>. Center: ' + c.lat.toFixed(4) + ', ' + c.lng.toFixed(4) + ' &nbsp;|&nbsp; Zoom: ' + map.getZoom());
+    });
+
+    map.on('zoomend', () => {
+      updateInfo('<strong>Zoom changed</strong> to level ' + map.getZoom());
+    });
+  </script>
+</body>
+</html>

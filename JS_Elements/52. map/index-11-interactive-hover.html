@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leaflet Demo 11 - Interactive Hover Map (Real Boundaries)</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', sans-serif; padding: 1rem; background: #1a1a2e; color: #eee; }
+    h1 { margin-bottom: 0.5rem; font-size: 1.25rem; color: #00d9ff; }
+    p { margin-bottom: 1rem; font-size: 0.9rem; opacity: 0.9; }
+    #map { height: 560px; border-radius: 12px; border: 2px solid #333; }
+    .state-layer { cursor: pointer; }
+    .leaflet-tooltip { background: #16213e !important; border: 2px solid #00d9ff !important; color: #eee !important; border-radius: 8px !important; padding: 10px 14px !important; font-size: 13px !important; box-shadow: 0 4px 12px rgba(0,0,0,0.4); white-space: nowrap; }
+    .tooltip-title { font-weight: bold; color: #00d9ff; margin-bottom: 4px; }
+    .tooltip-desc { opacity: 0.9; font-size: 12px; white-space: normal; }
+    #loading { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: #16213e; padding: 1rem 1.5rem; border-radius: 8px; z-index: 1000; }
+  </style>
+</head>
+<body>
+  <h1>Demo 11: Interactive Hover Map (Real Boundaries)</h1>
+  <p>Hover over a <strong>state</strong>—e.g. New York—to highlight that state's boundary and see a tooltip with its name and info.</p>
+  <div id="map">
+    <div id="loading">Loading state boundaries…</div>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+    const map = L.map('map').setView([39.5, -98.35], 4);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap'
+    }).addTo(map);
+
+    const defaultStyle = {
+      weight: 1,
+      color: '#444',
+      fillColor: '#2ecc71',
+      fillOpacity: 0.35
+    };
+
+    const hoverStyle = {
+      weight: 3,
+      color: '#00d9ff',
+      fillColor: '#00d9ff',
+      fillOpacity: 0.6
+    };
+
+    function getStateName(props) {
+      return props.name || props.NAME || props.STATE || props.State || props.NAME_1 || 'State';
+    }
+
+    function getStateInfo(name) {
+      const info = {
+        'New York': 'State of New York. NYC is the largest city. Capital: Albany.',
+        'California': 'Most populous US state. Capital: Sacramento.',
+        'Texas': 'Second largest by area and population. Capital: Austin.',
+        'Florida': 'Southeastern state. Capital: Tallahassee.',
+        'Illinois': 'Midwestern state. Chicago is largest city. Capital: Springfield.'
+      };
+      return info[name] || 'Hover over a state to see it highlighted.';
+    }
+
+    function style(feature) {
+      return { ...defaultStyle };
+    }
+
+    function highlight(e) {
+      const layer = e.target;
+      layer.setStyle(hoverStyle);
+      layer.bringToFront();
+    }
+
+    function resetHighlight(e) {
+      e.target.setStyle(style(e.target.feature));
+    }
+
+    function onEachFeature(feature, layer) {
+      layer.on({ mouseover: highlight, mouseout: resetHighlight });
+      const name = getStateName(feature.properties);
+      layer.bindTooltip(
+        '<div class="tooltip-title">' + name + '</div><div class="tooltip-desc">' + getStateInfo(name) + '</div>',
+        { permanent: false, direction: 'top', opacity: 1, className: 'state-tooltip', offset: [0, -8] }
+      );
+    }
+
+    const geoUrl = 'https://raw.githubusercontent.com/shawnbot/topogram/master/data/us-states.geojson';
+
+    fetch(geoUrl)
+      .then(res => res.ok ? res.json() : Promise.reject(new Error('Failed to load')))
+      .then(geojson => {
+        document.getElementById('loading').remove();
+        L.geoJSON(geojson, {
+          style: style,
+          onEachFeature: onEachFeature
+        }).addTo(map);
+      })
+      .catch(err => {
+        const loading = document.getElementById('loading');
+        if (loading) loading.textContent = 'Could not load state boundaries. Try opening via a local server (e.g. npx serve).';
+        console.error(err);
+      });
+  </script>
+</body>
+</html>

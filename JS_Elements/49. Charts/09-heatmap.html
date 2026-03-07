@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Heatmap - Activity by Day & Hour</title>
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', system-ui, sans-serif; background: #f8fafc; padding: 2rem; min-height: 100vh; }
+    .container { max-width: 800px; margin: 0 auto; }
+    h1 { font-size: 1.25rem; font-weight: 600; color: #334155; margin-bottom: 1.5rem; }
+    #chart { background: #fff; border-radius: 8px; padding: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>User Activity (Mon–Fri, 9am–5pm)</h1>
+    <div id="chart"></div>
+  </div>
+  <script>
+    const options = {
+      series: [{
+        name: 'Mon', data: [{ x: '9am', y: 12 }, { x: '10am', y: 28 }, { x: '11am', y: 45 }, { x: '12pm', y: 38 }, { x: '1pm', y: 22 }, { x: '2pm', y: 52 }, { x: '3pm', y: 61 }, { x: '4pm', y: 48 }, { x: '5pm', y: 18 }]
+      }, {
+        name: 'Tue', data: [{ x: '9am', y: 18 }, { x: '10am', y: 35 }, { x: '11am', y: 52 }, { x: '12pm', y: 42 }, { x: '1pm', y: 30 }, { x: '2pm', y: 58 }, { x: '3pm', y: 55 }, { x: '4pm', y: 42 }, { x: '5pm', y: 22 }]
+      }, {
+        name: 'Wed', data: [{ x: '9am', y: 22 }, { x: '10am', y: 42 }, { x: '11am', y: 48 }, { x: '12pm', y: 55 }, { x: '1pm', y: 35 }, { x: '2pm', y: 65 }, { x: '3pm', y: 72 }, { x: '4pm', y: 55 }, { x: '5pm', y: 28 }]
+      }, {
+        name: 'Thu', data: [{ x: '9am', y: 15 }, { x: '10am', y: 32 }, { x: '11am', y: 58 }, { x: '12pm', y: 48 }, { x: '1pm', y: 28 }, { x: '2pm', y: 62 }, { x: '3pm', y: 68 }, { x: '4pm', y: 52 }, { x: '5pm', y: 25 }]
+      }, {
+        name: 'Fri', data: [{ x: '9am', y: 25 }, { x: '10am', y: 38 }, { x: '11am', y: 52 }, { x: '12pm', y: 45 }, { x: '1pm', y: 32 }, { x: '2pm', y: 55 }, { x: '3pm', y: 48 }, { x: '4pm', y: 35 }, { x: '5pm', y: 15 }]
+      }],
+      chart: { type: 'heatmap', height: 320, toolbar: { show: false } },
+      plotOptions: {
+        heatmap: { colorScale: { ranges: [
+          { from: 0, to: 25, color: '#dbeafe', name: 'Low' },
+          { from: 26, to: 50, color: '#93c5fd', name: 'Medium' },
+          { from: 51, to: 75, color: '#3b82f6', name: 'High' },
+          { from: 76, to: 100, color: '#1d4ed8', name: 'Peak' }
+        ]} }
+      },
+      dataLabels: { enabled: true },
+      xaxis: { labels: { style: { colors: '#64748b' } } },
+      grid: { borderColor: '#e2e8f0' },
+      tooltip: { theme: 'light' }
+    };
+    const chart = new ApexCharts(document.querySelector('#chart'), options);
+    chart.render();
+  </script>
+</body>
+</html>

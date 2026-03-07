@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resizable Div</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      min-height: 100vh;
+      padding: 2rem;
+      font-family: system-ui, sans-serif;
+      background: #1a1a2e;
+      color: #eee;
+    }
+    .info {
+      margin-bottom: 1rem;
+      padding: 0.75rem 1rem;
+      background: #16213e;
+      border-radius: 8px;
+      display: inline-block;
+      font-size: 1rem;
+    }
+    .info span {
+      color: #e94560;
+      font-weight: 600;
+    }
+    .resizable-box {
+      width: 300px;
+      height: 200px;
+      min-width: 120px;
+      min-height: 80px;
+      resize: both;
+      overflow: auto;
+      background: #0f3460;
+      border: 2px solid #e94560;
+      border-radius: 8px;
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="info" id="sizeDisplay">
+    Div size: <span id="width">300</span>px × <span id="height">200</span>px
+  </div>
+  <br>
+  <div class="resizable-box" id="resizableDiv">
+    Drag the corner to resize me
+  </div>
+
+  <script>
+    var resizableDiv = document.getElementById('resizableDiv');
+    var widthEl = document.getElementById('width');
+    var heightEl = document.getElementById('height');
+
+    function updateSize() {
+      widthEl.textContent = Math.round(resizableDiv.offsetWidth);
+      heightEl.textContent = Math.round(resizableDiv.offsetHeight);
+    }
+
+    updateSize();
+
+    var observer = new ResizeObserver(updateSize);
+    observer.observe(resizableDiv);
+  </script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leaflet Demo 9 - Styled Popups & Tooltips</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', sans-serif; padding: 1rem; background: #1a1a2e; color: #eee; }
+    h1 { margin-bottom: 0.5rem; font-size: 1.25rem; color: #00d9ff; }
+    p { margin-bottom: 1rem; font-size: 0.9rem; opacity: 0.9; }
+    #map { height: 500px; border-radius: 12px; border: 2px solid #333; }
+    .leaflet-popup-content-wrapper { background: #16213e; color: #eee; border-radius: 12px; border: 2px solid #00d9ff; box-shadow: 0 4px 20px rgba(0,217,255,0.3); }
+    .leaflet-popup-tip { background: #16213e; }
+    .leaflet-popup-content { margin: 14px 18px; font-size: 14px; }
+    .popup-title { color: #00d9ff; font-size: 16px; margin-bottom: 8px; border-bottom: 1px solid #333; padding-bottom: 6px; }
+    .popup-desc { opacity: 0.9; }
+    .leaflet-tooltip { background: #0f3460 !important; border: 1px solid #00d9ff !important; color: #eee !important; border-radius: 6px !important; padding: 6px 10px !important; }
+    .leaflet-tooltip-left::before { border-left-color: #0f3460 !important; }
+    .leaflet-tooltip-right::before { border-right-color: #0f3460 !important; }
+  </style>
+</head>
+<body>
+  <h1>Demo 9: Styled Popups & Tooltips</h1>
+  <p>Custom CSS for popups and tooltips. Hover for tooltip, click for popup.</p>
+  <div id="map"></div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+    const map = L.map('map').setView([40.7128, -74.0060], 13);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap'
+    }).addTo(map);
+
+    const places = [
+      { lat: 40.7589, lng: -73.9851, name: 'Times Square', desc: 'Famous intersection in Manhattan.' },
+      { lat: 40.6892, lng: -74.0445, name: 'Statue of Liberty', desc: 'Iconic monument on Liberty Island.' },
+      { lat: 40.7484, lng: -73.9857, name: 'Empire State Building', desc: '102-story Art Deco skyscraper.' }
+    ];
+
+    places.forEach(p => {
+      const marker = L.marker([p.lat, p.lng]).addTo(map);
+      marker.bindPopup(
+        '<div class="popup-title">' + p.name + '</div><div class="popup-desc">' + p.desc + '</div>',
+        { maxWidth: 280 }
+      );
+      marker.bindTooltip(p.name, {
+        permanent: false,
+        direction: 'top',
+        opacity: 0.95,
+        className: 'custom-tooltip'
+      });
+    });
+  </script>
+</body>
+</html>
