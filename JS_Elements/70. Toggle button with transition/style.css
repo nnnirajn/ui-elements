@@ -1,0 +1,99 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  line-height: 1.5;
+  background-color: #333;
+  color: #fff;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* uls that don't have a class */
+
+button {
+  background: none;
+  border: none;
+  font: inherit;
+  color: inherit;
+  outline: none;
+
+  &:focus-visible {
+    outline-style: solid;
+    outline-color: hsl(0 0% 100% / 0.2);
+    outline-width: 2px;
+  }
+}
+
+.toggle-buttons {
+  list-style: none;
+  display: flex;
+  gap: 0.25rem;
+  padding: 0.25rem;
+  border-radius: 3rem;
+  background-color: #000;
+}
+
+.toggle-buttons__item {
+  display: grid;
+  position: relative;
+}
+
+.toggle-buttons__button,
+.toggle-buttons__active {
+  grid-area: 1 / 1;
+}
+
+.toggle-buttons__button {
+
+  padding: 0.5rem 1.25rem;
+  position: relative;
+  z-index: 1;
+  view-transition-class: toggle-button;
+}
+
+.toggle-buttons__active {
+  background-color: deeppink;
+  border-radius: 3rem;
+  view-transition-name: active-toggle-button;
+
+  .toggle-buttons__item--react & {
+    background-color: #4e98b6;
+  }
+
+  .toggle-buttons__item--vue & {
+    background-color: #42b883;
+  }
+
+  .toggle-buttons__item--angular & {
+    background-color: #dd0031;
+  }
+
+  .toggle-buttons__item--svelte & {
+    background-color: #ff3e00;
+  }
+}
+
+::view-transition-group(.toggle-button) {
+  z-index: 2;
+}
+
+::view-transition-group(active-toggle-button) {
+  z-index: 1;
+  animation-timing-function: cubic-bezier(0.8, -0.4, 0.5, 1);
+  animation-duration: 0.25s;
+}
+
+::view-transition-old(active-toggle-button),
+::view-transition-new(active-toggle-button) {
+  height: 100%;
+}

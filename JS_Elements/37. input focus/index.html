@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Input focus demo</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: system-ui, sans-serif;
+      max-width: 420px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      line-height: 1.5;
+    }
+    label {
+      display: block;
+      margin-top: 1rem;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    input {
+      width: 100%;
+      margin-top: 0.35rem;
+      padding: 0.5rem 0.75rem;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    input:focus {
+      outline: 2px solid #2563eb;
+      outline-offset: 2px;
+      border-color: #2563eb;
+    }
+    button {
+      margin-top: 1.25rem;
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      cursor: pointer;
+      background: #2563eb;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+    }
+    button:hover {
+      background: #1d4ed8;
+    }
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      align-items: center;
+    }
+    .actions button {
+      margin-top: 1.25rem;
+    }
+    button.secondary {
+      background: #64748b;
+    }
+    button.secondary:hover {
+      background: #475569;
+    }
+    p.hint {
+      margin-top: 1.5rem;
+      font-size: 0.875rem;
+      color: #64748b;
+    }
+  </style>
+</head>
+<body>
+  <h1>Focus demo</h1>
+
+  <label for="first">Pehla input (page load par focus)</label>
+  <input id="first" type="text" placeholder="Yahan load par focus aayega" />
+
+  <label for="second">Doosra input (button se focus)</label>
+  <input id="second" type="text" placeholder="Neeche button dabao" />
+
+  <div class="actions">
+    <button type="button" id="focusBtn">Doosre input par focus</button>
+    <button type="button" id="blurBtn" class="secondary">Focus hatao</button>
+  </div>
+
+  <p class="hint">
+    Pehla: <code>load</code> par <code>.focus()</code>. Doosra: button se <code>.focus()</code>.
+    Focus hatao: <code>mousedown</code> par <code>preventDefault</code> (taaki button focus na le),
+    phir dono par <code>.blur()</code>.
+  </p>
+
+  <script>
+    const first = document.getElementById("first");
+    const second = document.getElementById("second");
+    const btn = document.getElementById("focusBtn");
+    const blurBtn = document.getElementById("blurBtn");
+
+    window.addEventListener("load", function () {
+      first.focus();
+    });
+
+    btn.addEventListener("click", function () {
+      second.focus();
+    });
+
+    blurBtn.addEventListener("mousedown", function (e) {
+      e.preventDefault();
+    });
+    blurBtn.addEventListener("click", function () {
+      first.blur();
+      second.blur();
+    });
+  </script>
+</body>
+</html>

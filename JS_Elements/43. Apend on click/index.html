@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Text boxes — add / remove</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      margin: 0;
+      min-height: 100vh;
+      padding: 2rem;
+      background: #f4f4f5;
+      color: #18181b;
+    }
+    h1 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      margin: 0 0 1.25rem;
+    }
+    .wrap {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      max-width: 28rem;
+    }
+    .inputs {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .row input[type="text"] {
+      width: 100%;
+      padding: 0.5rem 0.75rem;
+      border: 1px solid #d4d4d8;
+      border-radius: 8px;
+      font-size: 1rem;
+      background: #fff;
+    }
+    .row input[type="text"]:focus {
+      outline: 2px solid #3b82f6;
+      outline-offset: 1px;
+      border-color: #3b82f6;
+    }
+    .actions {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .icon-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.25rem;
+      height: 2.25rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: background 0.15s, transform 0.1s;
+    }
+    .icon-btn:active {
+      transform: scale(0.96);
+    }
+    .icon-btn:focus-visible {
+      outline: 2px solid #3b82f6;
+      outline-offset: 2px;
+    }
+    .btn-add {
+      background: #22c55e;
+      color: #fff;
+    }
+    .btn-add:hover {
+      background: #16a34a;
+    }
+    .btn-remove {
+      background: #fee2e2;
+      color: #b91c1c;
+    }
+    .btn-remove:hover {
+      background: #fecaca;
+    }
+    .icon-btn svg {
+      width: 1.125rem;
+      height: 1.125rem;
+    }
+    .btn-remove[hidden] {
+      display: none !important;
+    }
+  </style>
+</head>
+<body>
+  <h1>Text boxes</h1>
+  <div class="wrap">
+    <div class="inputs" id="inputs" aria-live="polite"></div>
+    <div class="actions">
+      <button type="button" class="icon-btn btn-add" id="btnAdd" title="Add row" aria-label="Add another text box"></button>
+      <button type="button" class="icon-btn btn-remove" id="btnRemove" title="Remove row" aria-label="Remove a text box"></button>
+    </div>
+  </div>
+
+  <script>
+    const inputsEl = document.getElementById("inputs");
+    const btnAdd = document.getElementById("btnAdd");
+    const btnRemove = document.getElementById("btnRemove");
+
+    const plusSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>`;
+    const crossSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>`;
+
+    btnAdd.innerHTML = plusSvg;
+    btnRemove.innerHTML = crossSvg;
+
+    function getRows() {
+      return [...inputsEl.querySelectorAll(".row")];
+    }
+
+    function updateRemoveVisibility() {
+      btnRemove.hidden = getRows().length <= 1;
+    }
+
+    function addRow() {
+      const row = document.createElement("div");
+      row.className = "row";
+      row.innerHTML = `<input type="text" placeholder="Type here…" aria-label="Text field" />`;
+      inputsEl.appendChild(row);
+      updateRemoveVisibility();
+      row.querySelector("input").focus();
+    }
+
+    function removeRow() {
+      const rows = getRows();
+      if (rows.length <= 1) return;
+      const active = document.activeElement;
+      const focusedRow = rows.find((r) => r.contains(active));
+      const toRemove = focusedRow || rows[rows.length - 1];
+      toRemove.remove();
+      updateRemoveVisibility();
+      const inputs = inputsEl.querySelectorAll(".row input");
+      if (inputs.length) inputs[inputs.length - 1].focus();
+    }
+
+    btnAdd.addEventListener("click", addRow);
+    btnRemove.addEventListener("click", removeRow);
+
+    addRow();
+  </script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+body {
+  font-family: system-ui, sans-serif;
+  max-width: 40rem;
+  margin: 1rem;
+}
+
+#status {
+  color: #444;
+  font-size: 0.9rem;
+}
+
+#list {
+  padding-left: 1.25rem;
+}
+
+#list li {
+  margin-bottom: 0.5rem;
+}

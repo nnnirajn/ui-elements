@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Body scroll — buttons</title>
+    <style>
+        body {
+            font-family: system-ui, sans-serif;
+            margin: 0;
+            padding: 1rem;
+            line-height: 1.5;
+        }
+
+        .bar {
+            position: fixed;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            z-index: 1;
+        }
+
+        button {
+            padding: 0.4rem 0.75rem;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bar">
+        <button type="button" id="up">↑ Up</button>
+        <button type="button" id="down">↓ Down</button>
+    </div>
+
+    <h1>Body scroll demo</h1>
+    <p>Fixed buttons scroll the page (document body).</p>
+
+    <!-- filler so the page scrolls -->
+    <div style="height: 5000px;">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore
+            magna aliqua.</p>
+        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        </p>
+        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+        <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
+            laborum.
+        </p>
+        <p>Curabitur pretium tincidunt lacus. Nulla gravida orci a odio. Nullam varius, turpis et commodo pharetra.</p>
+        <p>Integer in mauris eu nibh euismod gravida. Duis ac tellus et risus vulputate vehicula.</p>
+        <p>Donec lobortis risus a elit. Etiam tempor. Ut ullamcorper, ligula eu tempor congue, eros est euismod turpis.
+        </p>
+        <p>Maecenas fermentum consequat mi. Donec fermentum. Pellentesque malesuada nulla a mi.</p>
+        <p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae.</p>
+        <p>Aliquam erat volutpat. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium.</p>
+        <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni
+            dolores.
+        </p>
+        <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.</p>
+        <p>Sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
+        <p>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam.</p>
+        <p>Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur.</p>
+    </div>
+
+    <script>
+        const step = () => Math.min(window.innerHeight * 0.6, 400);
+        document.getElementById('up').addEventListener('click', () => {
+            window.scrollBy({ top: -step(), behavior: 'smooth' });
+        });
+        document.getElementById('down').addEventListener('click', () => {
+            window.scrollBy({ top: step(), behavior: 'smooth' });
+        });
+    </script>
+</body>
+
+</html>

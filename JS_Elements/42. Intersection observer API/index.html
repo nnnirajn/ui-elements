@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Animate on Scroll Using CSS3 And Intersection Observer Example</title>
+  <link href="https://www.cssscript.com/demo/sticky.css" rel="stylesheet" type="text/css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    html,
+    * {
+      font-family: 'Inter';
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #fafafa;
+      line-height: 1.6;
+    }
+
+    .lead {
+      font-size: 1.5rem;
+      font-weight: 300;
+    }
+
+    .container {
+      margin: 150px auto;
+      max-width: 640px;
+    }
+
+    .box {
+      height: 300px;
+      background: #222;
+      color: #fff;
+      text-align: center;
+      line-height: 300px;
+      box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+    }
+
+    /* apply your own CSS3 animations to the elements when they are visible */
+    .is-animated {
+      opacity: 0;
+      transform: translateY(35%);
+      transition: opacity 0.7s, transform 0.7s;
+      background-color: black;
+    }
+
+    .is-animated.scrolled-into-view {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.7s, transform 0.7s;
+      background-color: green;
+    }
+  </style>
+
+</head>
+
+<body>
+  <div class="container">
+    <h1>Animate on Scroll Using CSS3 And Intersection Observer Example</h1>
+    <p class="lead">Use the Intersection Observer API to trigger CSS3 animations on scroll by calling a function when
+      scrolling meets a given height threshold.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis porta auctor fringilla. Maecenas iaculis tellus
+      velit, at bibendum nibh pharetra at. Donec tellus arcu, viverra vitae ornare nec, bibendum a nisi. Sed finibus
+      quis tellus vel lobortis. Donec vestibulum tellus in aliquet volutpat. Morbi tincidunt vehicula nibh in imperdiet.
+      Donec euismod velit in blandit tempor. Aliquam et magna nec turpis vulputate aliquam at id turpis. Quisque
+      vestibulum velit dui, nec efficitur tortor hendrerit nec. Nullam urna justo, luctus eu fringilla et, gravida eu
+      neque. Morbi lacus odio, finibus ut dolor non, bibendum vehicula nibh. Ut sollicitudin metus at nulla porttitor
+      dignissim. Phasellus ac dignissim mi, nec hendrerit dui. Nam aliquam, ligula sit amet vehicula placerat, purus
+      orci vehicula magna, ut tristique libero dui eu metus. Nullam ut egestas purus. Ut egestas, ligula vel mollis
+      ultricies, metus dui fringilla lectus, non tempor libero tortor vitae lectus.</p>
+    <p>Aliquam magna tortor, feugiat sit amet aliquam fermentum, placerat et nisi. Mauris varius aliquet dolor, et
+      dignissim tortor. Sed ultrices rhoncus tortor tincidunt aliquet. Integer mauris sapien, imperdiet commodo justo
+      quis, accumsan efficitur metus. Mauris a erat rhoncus, pretium dui sed, pellentesque magna. Curabitur lacinia sem
+      sit amet libero placerat, id blandit ante accumsan. Donec porta erat vel nunc consectetur scelerisque vel vel ex.
+      Donec nulla neque, efficitur id turpis sed, vulputate gravida neque. Curabitur in libero lacinia, ornare massa a,
+      dictum urna. In consectetur mi at ligula porta, non blandit nibh lacinia. Pellentesque id metus ac dolor congue
+      ornare ut in eros. Phasellus condimentum, dui ut pretium porttitor, orci felis congue dolor, nec commodo nibh eros
+      nec libero. Proin vitae malesuada quam. Aliquam blandit magna ut leo volutpat dapibus. In dapibus condimentum
+      placerat. Integer et lobortis urna, eget pharetra felis.</p>
+    <!-- Add the CSS Class is-animated To the Element -->
+    <div class="box is-animated">
+      <h2>🧑🏼‍🚀 Animate On Scroll</h2>
+    </div>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis porta auctor fringilla. Maecenas iaculis tellus
+      velit, at bibendum nibh pharetra at. Donec tellus arcu, viverra vitae ornare nec, bibendum a nisi. Sed finibus
+      quis tellus vel lobortis. Donec vestibulum tellus in aliquet volutpat. Morbi tincidunt vehicula nibh in imperdiet.
+      Donec euismod velit in blandit tempor. Aliquam et magna nec turpis vulputate aliquam at id turpis. Quisque
+      vestibulum velit dui, nec efficitur tortor hendrerit nec. Nullam urna justo, luctus eu fringilla et, gravida eu
+      neque. Morbi lacus odio, finibus ut dolor non, bibendum vehicula nibh. Ut sollicitudin metus at nulla porttitor
+      dignissim. Phasellus ac dignissim mi, nec hendrerit dui. Nam aliquam, ligula sit amet vehicula placerat, purus
+      orci vehicula magna, ut tristique libero dui eu metus. Nullam ut egestas purus. Ut egestas, ligula vel mollis
+      ultricies, metus dui fringilla lectus, non tempor libero tortor vitae lectus.</p>
+    <p>Aliquam magna tortor, feugiat sit amet aliquam fermentum, placerat et nisi. Mauris varius aliquet dolor, et
+      dignissim tortor. Sed ultrices rhoncus tortor tincidunt aliquet. Integer mauris sapien, imperdiet commodo justo
+      quis, accumsan efficitur metus. Mauris a erat rhoncus, pretium dui sed, pellentesque magna. Curabitur lacinia sem
+      sit amet libero placerat, id blandit ante accumsan. Donec porta erat vel nunc consectetur scelerisque vel vel ex.
+      Donec nulla neque, efficitur id turpis sed, vulputate gravida neque. Curabitur in libero lacinia, ornare massa a,
+      dictum urna. In consectetur mi at ligula porta, non blandit nibh lacinia. Pellentesque id metus ac dolor congue
+      ornare ut in eros. Phasellus condimentum, dui ut pretium porttitor, orci felis congue dolor, nec commodo nibh eros
+      nec libero. Proin vitae malesuada quam. Aliquam blandit magna ut leo volutpat dapibus. In dapibus condimentum
+      placerat. Integer et lobortis urna, eget pharetra felis.</p>
+    <div class="box is-animated">
+      <h2>🧑🏼‍🚀 Animate On Scroll</h2>
+    </div>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis porta auctor fringilla. Maecenas iaculis tellus
+      velit, at bibendum nibh pharetra at. Donec tellus arcu, viverra vitae ornare nec, bibendum a nisi. Sed finibus
+      quis tellus vel lobortis. Donec vestibulum tellus in aliquet volutpat. Morbi tincidunt vehicula nibh in imperdiet.
+      Donec euismod velit in blandit tempor. Aliquam et magna nec turpis vulputate aliquam at id turpis. Quisque
+      vestibulum velit dui, nec efficitur tortor hendrerit nec. Nullam urna justo, luctus eu fringilla et, gravida eu
+      neque. Morbi lacus odio, finibus ut dolor non, bibendum vehicula nibh. Ut sollicitudin metus at nulla porttitor
+      dignissim. Phasellus ac dignissim mi, nec hendrerit dui. Nam aliquam, ligula sit amet vehicula placerat, purus
+      orci vehicula magna, ut tristique libero dui eu metus. Nullam ut egestas purus. Ut egestas, ligula vel mollis
+      ultricies, metus dui fringilla lectus, non tempor libero tortor vitae lectus.</p>
+    <p>Aliquam magna tortor, feugiat sit amet aliquam fermentum, placerat et nisi. Mauris varius aliquet dolor, et
+      dignissim tortor. Sed ultrices rhoncus tortor tincidunt aliquet. Integer mauris sapien, imperdiet commodo justo
+      quis, accumsan efficitur metus. Mauris a erat rhoncus, pretium dui sed, pellentesque magna. Curabitur lacinia sem
+      sit amet libero placerat, id blandit ante accumsan. Donec porta erat vel nunc consectetur scelerisque vel vel ex.
+      Donec nulla neque, efficitur id turpis sed, vulputate gravida neque. Curabitur in libero lacinia, ornare massa a,
+      dictum urna. In consectetur mi at ligula porta, non blandit nibh lacinia. Pellentesque id metus ac dolor congue
+      ornare ut in eros. Phasellus condimentum, dui ut pretium porttitor, orci felis congue dolor, nec commodo nibh eros
+      nec libero. Proin vitae malesuada quam. Aliquam blandit magna ut leo volutpat dapibus. In dapibus condimentum
+      placerat. Integer et lobortis urna, eget pharetra felis.</p>
+    <div class="box is-animated">
+      <h2>🧑🏼‍🚀 Animate On Scroll</h2>
+    </div>
+  </div>
+
+  <script src="./script.js"></script>
+</body>
+
+</html>

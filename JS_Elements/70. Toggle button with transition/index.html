@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Active Indicator using View Transition API</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+
+<body>
+  <h1>Active Indicator using View Transition API</h1>
+  
+  
+  <ul class="toggle-buttons" aria-label="Frameworks">
+    <li class="toggle-buttons__item"> <button class="toggle-buttons__button" type="button">CSSScript</button> </li>
+    <li class="toggle-buttons__item toggle-buttons__item--react"> <button class="toggle-buttons__button"
+        type="button">jQueryScript</button> </li>
+    <li class="toggle-buttons__item toggle-buttons__item--vue"> <button class="toggle-buttons__button"
+        type="button">ReactScript</button> </li>
+    <li class="toggle-buttons__item toggle-buttons__item--angular"> <button class="toggle-buttons__button"
+        type="button">VueScript</button> </li>
+    <li class="toggle-buttons__item toggle-buttons__item--svelte"> <button class="toggle-buttons__button"
+        type="button">ScriptByAI</button> </li>
+  </ul>
+
+  <h4 id="selected-tab-label" aria-live="polite"></h4>
+  <script src="./script.js"></script>
+</body>
+
+</html>

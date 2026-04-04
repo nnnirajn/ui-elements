@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/zoomora/dist/zoomora.css">
+    <title>LightBox Gallery</title>
+</head>
+<body>
+
+    <!-- Add data-zoomora attribute with a unique group ID -->
+    <img src="https://picsum.photos/seed/picsum/200/300" data-src="https://picsum.photos/seed/picsum/200/300" data-zoomora="my-gallery" alt="Image 1">
+    
+    <img src="https://picsum.photos/id/237/200/300" data-src="https://picsum.photos/id/237/200/300" data-zoomora="my-gallery" alt="Image 2">
+
+    <img src="https://picsum.photos/seed/picsum/200/300" data-src="https://picsum.photos/seed/picsum/200/300" data-zoomora="my-gallery" alt="Image 1">
+    
+    <img src="https://picsum.photos/id/237/200/300" data-src="https://picsum.photos/id/237/200/300" data-zoomora="my-gallery" alt="Image 2">
+
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/zoomora/dist/zoomora.umd.min.js"></script>
+
+    <script>
+        const lightbox = new Zoomora({
+                selector: '[data-zoomora]',
+                showCounter: true,
+                showThumbnails: true,
+                showFullscreen: true,
+                showZoom: true,
+                transition: 'fade', // 'fade' or 'slide'
+                maxZoomScale: 3,
+                animationDuration: 300,
+                closeOnBackgroundClick: true, // v1.2.0+
+                autoHideDelay: 3000,
+                autoHideEnabled: false,
+                onOpen: (element, index) => {
+                    console.log('Lightbox opened', element, index);
+                },
+                onClose: (index) => {
+                    console.log('Lightbox closed', index);
+                }
+            });
+    </script>
+</body>
+</html>
+
+<!-- https://github.com/fronttheme/zoomora -->
